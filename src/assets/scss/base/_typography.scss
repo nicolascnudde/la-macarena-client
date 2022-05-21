@@ -1,0 +1,52 @@
+/*
+Typography
+*/
+@import './fonts';
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Gilroy';
+  font-weight: $fontWeightBold;
+  line-height: 1.2;
+}
+
+h1,
+.h1-style {
+  font-size: $fontSize40;
+  line-height: 1;
+
+  @include responsive(tablet) {
+    font-size: $fontSize80;
+  }
+}
+
+h2,
+.h2-style {
+  font-size: $fontSize32;
+
+  @include responsive(tablet) {
+    font-size: $fontSize48;
+  }
+}
+
+h3,
+.h3-style {
+  font-size: $fontSize24;
+}
+
+body,
+input {
+  font-family: 'Gilroy';
+  font-weight: $fontWeightLight;
+}
+
+label {
+  font-weight: $fontWeightBold;
+}
