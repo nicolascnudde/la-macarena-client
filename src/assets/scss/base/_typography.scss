@@ -8,13 +8,9 @@ Typography
 // Headings
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h3 {
   font-family: 'Gilroy';
   font-weight: $fontWeightBold;
-  line-height: 1.2;
 }
 
 h1,
@@ -30,6 +26,7 @@ h1,
 h2,
 .h2-style {
   font-size: $fontSize32;
+  line-height: 1.2;
 
   @include responsive(tablet) {
     font-size: $fontSize48;
@@ -39,11 +36,16 @@ h2,
 h3,
 .h3-style {
   font-size: $fontSize24;
+  line-height: 1.2;
 }
 
 body,
+p,
+small,
 input {
+  color: $clrPrimary;
   font-family: 'Gilroy';
+  font-size: $fontSize18;
   font-weight: $fontWeightLight;
 }
 

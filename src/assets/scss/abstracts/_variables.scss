@@ -1,7 +1,6 @@
 /*
 Variables
 */
-
 // Font colors
 $clrPrimary: #100040;
 $clrRed: #f69d9e;
@@ -24,3 +23,13 @@ $fontSize80: 5rem;
 // Font weights
 $fontWeightLight: 300;
 $fontWeightBold: 800;
+
+// Transitions
+$transitionFast: 0.2s;
+$transitionNormal: 0.4s;
+$transitionSlow: 0.6s;
+
+// Border radius
+$borderRadiusSmall: 5px;
+$borderRadiusNormal: 10px;
+$borderRadiusLarge: 25px;
