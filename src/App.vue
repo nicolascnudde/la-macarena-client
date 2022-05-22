@@ -1,5 +1,4 @@
 <script>
-import gql from 'graphql-tag';
 import Home from './views/Home.vue';
 
 export default {
