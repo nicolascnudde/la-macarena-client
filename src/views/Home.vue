@@ -1,11 +1,16 @@
 <script>
+import BaseLayout from '../layouts/BaseLayout.vue';
+
 export default {
   name: 'Home',
+  components: { BaseLayout },
 };
 </script>
 
 <template>
-  <h1>Home</h1>
+  <BaseLayout>
+    <h1>Say hello</h1>
+  </BaseLayout>
 </template>
 
 <style lang="scss">

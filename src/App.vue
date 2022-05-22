@@ -8,13 +8,7 @@ export default {
 </script>
 
 <template>
-  <header>This will be the header.</header>
-
-  <main>
-    <Home />
-  </main>
-
-  <footer>This will be the footer.</footer>
+  <Home />
 </template>
 
 <style lang="scss">
