@@ -97,7 +97,7 @@ export default {
     background-color: $clrYellow;
     position: fixed;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     z-index: 10;
 
     .app__header__nav {
