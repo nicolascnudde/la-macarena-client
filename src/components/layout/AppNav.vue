@@ -8,19 +8,19 @@ export default {
   <nav class="app__header__nav">
     <ul class="app__header__nav__list">
       <li class="app__header__nav__list__item">
-        <a>Activities</a>
+        <a href="#">Activities</a>
       </li>
 
       <li class="app__header__nav__list__item">
-        <a>About</a>
+        <a href="#">About</a>
       </li>
 
       <li class="app__header__nav__list__item">
-        <a>Goals</a>
+        <a href="#">Goals</a>
       </li>
 
       <li class="app__header__nav__list__item">
-        <a>Contact</a>
+        <a href="#">Contact</a>
       </li>
     </ul>
   </nav>

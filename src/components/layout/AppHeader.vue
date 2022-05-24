@@ -62,20 +62,22 @@ export default {
   &__nav {
     opacity: 0;
     height: 0;
+    overflow: hidden;
     transform: translateX(100%);
-    transition: transform 0.4s ease;
+    transition: transform $transitionNormal ease;
   }
 
   &__socials {
     opacity: 0;
     height: 0;
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
+    overflow: hidden;
+    transform: translateY(200%);
+    transition: transform $transitionNormal ease;
   }
 
   @include responsive(desktop) {
     flex-direction: row;
-    
+
     .btn--hamburger {
       display: none;
     }
@@ -102,7 +104,6 @@ export default {
       opacity: 1;
       height: auto;
       transform: translateX(0);
-      transition: all 0.4s ease;
     }
 
     .app__header__socials {
@@ -113,8 +114,7 @@ export default {
       opacity: 1;
       height: auto;
       transform: translateY(0);
-      transition: all 0.4s ease;
-      transition-delay: 0.4s;
+      transition-delay: $transitionNormal;
 
       .icon {
         &--facebook {
