@@ -10,6 +10,116 @@ export default {
 <template>
   <BaseLayout>
     <h1>Say hello</h1>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
+
+    <p>Lorem ipsum</p>
   </BaseLayout>
 </template>
 

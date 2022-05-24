@@ -1,0 +1,26 @@
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &--hamburger {
+    width: 3rem;
+    height: 3rem;
+
+    &:before,
+    &:after,
+    & div {
+      background: $clrPrimary;
+      content: '';
+      display: block;
+      height: 6px;
+      border-radius: 3px;
+      margin: 7px 0;
+      transition: transform 0.4s;
+    }
+
+    &:before {
+      width: 75%;
+    }
+  }
+}
