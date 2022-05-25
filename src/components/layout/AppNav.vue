@@ -8,19 +8,23 @@ export default {
   <nav class="app__header__nav">
     <ul class="app__header__nav__list">
       <li class="app__header__nav__list__item">
-        <a href="#">Activities</a>
+        <router-link to="/">Home</router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <a href="#">About</a>
+        <router-link to="/activities">Activities</router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <a href="#">Goals</a>
+        <router-link to="/about">About</router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <a href="#">Contact</a>
+        <router-link to="/goals">Goals</router-link>
+      </li>
+
+      <li class="app__header__nav__list__item">
+        <router-link to="/contact">Contact</router-link>
       </li>
     </ul>
   </nav>
@@ -38,6 +42,11 @@ export default {
     &__item {
       font-size: $fontSize40;
       font-weight: $fontWeightBold;
+
+      &__link--active {
+        border-bottom: 2px solid $clrPrimary;
+        padding: 0 0.15rem 0.3rem 0.15rem;
+      }
     }
   }
 
