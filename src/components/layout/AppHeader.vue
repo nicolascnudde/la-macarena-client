@@ -1,10 +1,10 @@
 <script>
-import AppNav from './AppNav.vue';
+import AppNavigation from './AppNavigation.vue';
 import Socials from '../Socials.vue';
 
 export default {
   name: 'AppHeader',
-  components: { AppNav, Socials },
+  components: { AppNavigation, Socials },
   data() {
     return {
       isNavOpen: false,
@@ -30,7 +30,7 @@ export default {
       </button>
     </div>
 
-    <AppNav />
+    <AppNavigation />
 
     <Socials class="app__header__socials" />
   </header>
