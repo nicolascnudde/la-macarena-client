@@ -1,9 +1,13 @@
+/*
+Buttons
+*/
 .btn {
-  background: none;
   border: none;
   cursor: pointer;
+  background: none;
 
   &--hamburger {
+    background: none;
     width: 3rem;
     height: 3rem;
 

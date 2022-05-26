@@ -1,7 +1,7 @@
-import AppHeader from './AppHeader.vue';
-import AppNavigation from './AppNavigation.vue';
+import TheHeader from './TheHeader.vue';
+import TheNavigation from './TheNavigation.vue';
 
 export {
-  AppHeader,
-  AppNavigation,
+  TheHeader,
+  TheNavigation,
 };

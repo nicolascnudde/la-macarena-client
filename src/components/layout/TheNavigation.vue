@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'AppNavigation',
+  name: 'TheNavigation',
 };
 </script>
 
@@ -8,23 +8,23 @@ export default {
   <nav class="app__header__nav">
     <ul class="app__header__nav__list">
       <li class="app__header__nav__list__item">
-        <router-link to="/">Home</router-link>
+        <router-link to="/" class="app__header__nav__list__item">Home</router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <router-link to="/activities">Activities</router-link>
+        <router-link to="/activities" class="app__header__nav__list__item">Activities</router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <router-link to="/about">About</router-link>
+        <router-link to="/about" class="app__header__nav__list__item">About</router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <router-link to="/goals">Goals</router-link>
+        <router-link to="/goals" class="app__header__nav__list__item">Goals</router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <router-link to="/contact">Contact</router-link>
+        <router-link to="/contact" class="app__header__nav__list__item">Contact</router-link>
       </li>
     </ul>
   </nav>
@@ -43,9 +43,12 @@ export default {
       font-size: $fontSize40;
       font-weight: $fontWeightBold;
 
+      a {
+        padding: 0 0.25rem;
+      }
+
       &__link--active {
-        border-bottom: 2px solid $clrPrimary;
-        padding: 0 0.15rem 0.3rem 0.15rem;
+        background: linear-gradient($clrRed 0 0) bottom / 100% 50% no-repeat;
       }
     }
   }

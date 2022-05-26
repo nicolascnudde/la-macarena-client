@@ -1,14 +1,14 @@
 <script>
-import { AppHeader } from '../components/layout';
+import { TheHeader } from '../components/layout';
 
 export default {
   name: 'BaseLayout',
-  components: { AppHeader },
+  components: { TheHeader },
 };
 </script>
 
 <template>
-  <AppHeader />
+  <TheHeader />
 
   <main>
     <slot></slot>

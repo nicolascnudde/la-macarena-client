@@ -1,3 +1,6 @@
+/*
+Icons
+*/
 .icon {
   fill: $clrPrimary;
 
@@ -9,5 +12,10 @@
   &--instagram {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  &--arrow-right {
+    width: 1.8rem;
+    height: 0.6rem;
   }
 }
