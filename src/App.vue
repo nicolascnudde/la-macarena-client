@@ -5,7 +5,11 @@ export default {
 </script>
 
 <template>
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" :key="$route.path"></component>
+    </transition>
+  </router-view>
 </template>
 
 <style lang="scss">
@@ -17,5 +21,17 @@ export default {
 
 html {
   scroll-behavior: smooth;
+}
+
+.fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity $transitionNormal;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
 }
 </style>

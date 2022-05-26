@@ -8,9 +8,11 @@ export default {
 </script>
 
 <template>
-  <TheHeader />
+  <div>
+    <TheHeader />
 
-  <main>
-    <slot></slot>
-  </main>
+    <main>
+      <slot></slot>
+    </main>
+  </div>
 </template>
