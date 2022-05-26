@@ -2,6 +2,7 @@
 import { createApp, h } from 'vue';
 import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import { createApolloProvider } from '@vue/apollo-option';
+import { createMetaManager } from "vue-meta";
 
 import App from '@/App.vue';
 import { router } from '@/router';
@@ -27,6 +28,7 @@ const app = createApp({
 // Use Apollo and the router
 app.use(apolloProvider);
 app.use(router);
+app.use(createMetaManager());
 
 // Mount the app
 app.mount('#app');

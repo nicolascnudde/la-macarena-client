@@ -1,9 +1,14 @@
 <script>
+import { useMeta } from 'vue-meta';
+
 import BaseLayout from '../layouts/BaseLayout.vue';
 
 export default {
-  name: 'About us',
+  name: 'About',
   components: { BaseLayout },
+  setup() {
+    useMeta({ title: 'About' });
+  },
 };
 </script>
 
@@ -11,9 +16,16 @@ export default {
   <BaseLayout>
     <h1>About us</h1>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </p>
   </BaseLayout>
 </template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

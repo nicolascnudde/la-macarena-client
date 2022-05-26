@@ -1,9 +1,14 @@
 <script>
+import { useMeta } from 'vue-meta';
+
 import BaseLayout from '../layouts/BaseLayout.vue';
 
 export default {
   name: '404',
   components: { BaseLayout },
+  setup() {
+    useMeta({ title: '404' });
+  },
 };
 </script>
 

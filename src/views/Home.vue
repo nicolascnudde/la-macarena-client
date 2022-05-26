@@ -1,10 +1,15 @@
 <script>
+import { useMeta } from 'vue-meta';
+
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import AppButton from '@/components/button/AppButton.vue';
 
 export default {
   name: 'Home',
   components: { BaseLayout, AppButton },
+  setup() {
+    useMeta({ title: '' });
+  },
 };
 </script>
 
@@ -13,9 +18,7 @@ export default {
     <h1>Say hello</h1>
 
     <AppButton type="secondary">
-      <router-link to="/activities">
-        Activities
-      </router-link>
+      <router-link to="/activities"> Activities </router-link>
     </AppButton>
   </BaseLayout>
 </template>

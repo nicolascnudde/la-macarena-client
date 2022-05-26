@@ -1,10 +1,22 @@
 <script>
+import { useMeta } from 'vue-meta';
+
 export default {
   name: 'App',
+  setup() {
+    useMeta({
+      title: '',
+      htmlAttrs: { lang: 'en', amp: true },
+    });
+  },
 };
 </script>
 
 <template>
+  <metainfo>
+    <template v-slot:title="{ content }">{{ content ? `${content} - La Macarena` : `La Macarena` }}</template>
+  </metainfo>
+
   <router-view v-slot="{ Component }">
     <transition name="fade" mode="out-in">
       <component :is="Component" :key="$route.path"></component>
