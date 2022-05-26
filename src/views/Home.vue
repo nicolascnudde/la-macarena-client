@@ -12,7 +12,11 @@ export default {
   <BaseLayout>
     <h1>Say hello</h1>
 
-    <AppButton type="primary" color="green">Title</AppButton>
+    <AppButton type="secondary">
+      <router-link to="/activities">
+        Activities
+      </router-link>
+    </AppButton>
   </BaseLayout>
 </template>
 
