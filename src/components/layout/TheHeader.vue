@@ -89,7 +89,9 @@ export default {
     }
 
     &__socials {
-      display: none;
+      &.socials {
+        display: none;
+      }
     }
   }
 
@@ -107,10 +109,6 @@ export default {
     }
 
     .app__header__socials {
-      display: flex;
-      justify-content: center;
-      align-items: baseline;
-      gap: 3rem;
       opacity: 1;
       height: auto;
       transform: translateY(0);

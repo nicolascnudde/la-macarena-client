@@ -1,9 +1,9 @@
 <script>
-import { TheHeader } from '../components/layout';
+import { TheFooter, TheHeader } from '../components/layout';
 
 export default {
   name: 'BaseLayout',
-  components: { TheHeader },
+  components: { TheFooter, TheHeader },
 };
 </script>
 
@@ -14,5 +14,7 @@ export default {
     <main>
       <slot></slot>
     </main>
+
+    <TheFooter />
   </div>
 </template>
