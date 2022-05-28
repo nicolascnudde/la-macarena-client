@@ -53,7 +53,7 @@ export default {
   }
 
   &__text {
-    font-size: $fontSize16;
+    font-size: $fontSize18;
     font-weight: $fontWeightBold;
   }
 

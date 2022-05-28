@@ -9,13 +9,44 @@ export default {
 </script>
 
 <template>
-  <div class="socials">
-    <a href="https://www.instagram.com/la-macarena-be" target="_blank" rel="noopener noreferrer">
-      <InstagramIcon />
-    </a>
+  <ul class="socials">
+    <li class="socials__list__item">
+      <a
+        href="https://www.instagram.com/la-macarena-be"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <InstagramIcon />
+      </a>
+    </li>
 
-    <a href="https://www.facebook.com/la-macarena-be" target="_blank" rel="noopener noreferrer">
-      <FacebookIcon />
-    </a>
-  </div>
+    <li class="socials__list__item">
+      <a
+        href="https://www.facebook.com/la-macarena-be"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FacebookIcon />
+      </a>
+    </li>
+  </ul>
 </template>
+
+<style lang="scss">
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 3rem;
+
+  &__list__item {
+    @include responsive(desktop) {
+      transition: transform $transitionFast;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+</style>
