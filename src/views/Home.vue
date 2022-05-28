@@ -2,11 +2,11 @@
 import { useMeta } from 'vue-meta';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
-import AppButton from '@/components/button/AppButton.vue';
+import Hero from '@/components/hero/Hero.vue';
 
 export default {
   name: 'Home',
-  components: { BaseLayout, AppButton },
+  components: { BaseLayout, Hero },
   setup() {
     useMeta({ title: '' });
   },
@@ -15,11 +15,12 @@ export default {
 
 <template>
   <BaseLayout>
-    <h1>Say hello</h1>
-
-    <AppButton type="secondary">
-      <router-link to="/activities"> Activities </router-link>
-    </AppButton>
+    <Hero
+      title="La Macarena"
+      description="Homepage hero description."
+      buttonText="Upcoming activities"
+      buttonLink="/activities"
+    />
   </BaseLayout>
 </template>
 

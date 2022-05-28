@@ -9,15 +9,21 @@ export default {
       type: String,
       default: 'primary',
     },
+    link: {
+      type: String,
+      default: '/',
+    },
   },
 };
 </script>
 
 <template>
   <button :class="`btn btn--${type}`">
-    <span class="btn__text"><slot></slot></span>
+    <router-link :to="link">
+      <span class="btn__text"><slot></slot></span>
 
-    <ArrowRight class="btn__icon" />
+      <ArrowRight class="btn__icon" />
+    </router-link>
   </button>
 </template>
 
@@ -40,21 +46,24 @@ export default {
 
   &--primary {
     .btn__text {
-      background: linear-gradient($clrRed 0 0) bottom / 100% var(--size, 0) no-repeat;
+      background: linear-gradient($clrRed 0 0) bottom / 100% var(--size, 0)
+        no-repeat;
       transition: $transitionNormal;
     }
   }
 
   &--secondary {
     .btn__text {
-      background: linear-gradient($clrBlue 0 0) bottom / 100% var(--size, 0) no-repeat;
+      background: linear-gradient($clrBlue 0 0) bottom / 100% var(--size, 0)
+        no-repeat;
       transition: $transitionNormal;
     }
   }
 
   &__text {
-    font-size: $fontSize18;
     font-weight: $fontWeightBold;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
   }
 
   &__icon {

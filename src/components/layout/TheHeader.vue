@@ -42,9 +42,14 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 
+  @include responsive(tablet) {
+    height: 8rem;
+  }
+
   &.container {
     padding-top: 1rem;
     padding-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 
   &__top {
