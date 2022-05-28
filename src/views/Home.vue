@@ -3,10 +3,11 @@ import { useMeta } from 'vue-meta';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import Hero from '@/components/hero/Hero.vue';
+import InfoBlock from '../components/InfoBlock.vue';
 
 export default {
   name: 'Home',
-  components: { BaseLayout, Hero },
+  components: { BaseLayout, Hero, InfoBlock },
   setup() {
     useMeta({ title: '' });
   },
@@ -21,6 +22,8 @@ export default {
       buttonText="Upcoming activities"
       buttonLink="/activities"
     />
+
+    <InfoBlock />
   </BaseLayout>
 </template>
 
