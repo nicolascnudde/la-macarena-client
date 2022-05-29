@@ -8,10 +8,10 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="app__wrapper">
     <TheHeader />
 
-    <main>
+    <main class="app__main">
       <slot></slot>
     </main>
 

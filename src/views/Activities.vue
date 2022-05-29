@@ -15,7 +15,7 @@ export default {
 
 <template>
   <BaseLayout>
-    <TitleAndText bgImage="blue-brush.png" type="h" title="Activities">
+    <TitleAndText bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846484/bg-images/Brush_blue_bxzmpm.png" type="h1" title="Activities">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
     </TitleAndText>

@@ -10,7 +10,7 @@ export default {
       type: String,
       default: 'h2',
     },
-    bgImage: {
+    bgImageUrl: {
       type: String,
       default: '',
     },
@@ -31,7 +31,7 @@ export default {
       </div>
 
       <div class="title-text__image">
-        <img :src="`src/assets/images/${bgImage}`" />
+        <img :src="bgImageUrl" />
       </div>
     </div>
   </section>

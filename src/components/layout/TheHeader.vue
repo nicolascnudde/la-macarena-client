@@ -21,9 +21,11 @@ export default {
 <template>
   <header :class="['app__header', 'container', { open: isNavOpen }]">
     <div class="app__header__top">
-      <div class="app__header__top__logo">
-        <img src="https://i.imgur.com/oU7CVcy.png" alt="La Macarena logo" />
-      </div>
+      <router-link class="link-to-home" to="/">
+        <div class="app__header__top__logo">
+          <img src="https://i.imgur.com/oU7CVcy.png" alt="La Macarena logo" />
+        </div>
+      </router-link>
 
       <button class="btn btn--hamburger" @click="toggleNav">
         <div></div>
@@ -56,6 +58,10 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .link-to-home {
+      background: none; // Hide the background of the active link on the site logo
+    }
 
     &__logo {
       img {
