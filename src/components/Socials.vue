@@ -42,7 +42,7 @@ export default {
     align-items: baseline;
     gap: 3rem;
 
-    &__list__item {
+    &__item {
       @include responsive(desktop) {
         transition: transform $transitionFast;
 
