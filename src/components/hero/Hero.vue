@@ -22,7 +22,7 @@ export default {
     },
     buttonLink: {
       type: String,
-      default: '/',
+      default: '#',
     },
   },
 };
@@ -54,7 +54,7 @@ export default {
 <style lang="scss">
 .hero {
   margin-bottom: 5rem;
-  min-height: 33rem;
+  min-height: 31rem; // Calculated from image height (30rem) and the absolute positioning (1rem) from the top
   position: relative;
 
   @include responsive(tablet) {
@@ -84,7 +84,7 @@ export default {
 
   &__image {
     position: absolute;
-    top: 3rem;
+    top: 1rem;
     opacity: 0.4;
     z-index: -1;
 

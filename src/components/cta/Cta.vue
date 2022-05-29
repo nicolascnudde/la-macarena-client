@@ -18,8 +18,7 @@ export default {
         </div>
 
         <p class="cta__content__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          euismod, nisi euismod consectetur consectetur,
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi euismod consectetur consectetur,
         </p>
 
         <AppButton class="cta__content__button" type="primary" link="/contact"
@@ -97,7 +96,7 @@ export default {
       margin-bottom: 2rem;
 
       @include responsive(tablet) {
-        width: 33%;
+        width: 50%;
       }
     }
   }

@@ -69,8 +69,6 @@ export default {
     }
 
     &__text {
-      line-height: 1.5;
-
       @include responsive(tablet) {
         position: absolute;
         top: 50%;

@@ -32,9 +32,6 @@ export default {
 
 <style lang="scss">
 h1 {
-  font-size: $fontSize80;
-  font-weight: $fontWeightBold;
-
   @include responsive(tablet) {
     color: lightcoral;
   }
