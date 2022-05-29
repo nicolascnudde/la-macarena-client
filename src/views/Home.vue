@@ -4,10 +4,11 @@ import { useMeta } from 'vue-meta';
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import Hero from '@/components/hero/Hero.vue';
 import InfoBlock from '../components/InfoBlock.vue';
+import Cta from '../components/cta/Cta.vue';
 
 export default {
   name: 'Home',
-  components: { BaseLayout, Hero, InfoBlock },
+  components: { BaseLayout, Cta, Hero, InfoBlock },
   setup() {
     useMeta({ title: '' });
   },
@@ -24,6 +25,8 @@ export default {
     />
 
     <InfoBlock />
+
+    <Cta />
   </BaseLayout>
 </template>
 
