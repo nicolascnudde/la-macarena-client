@@ -60,6 +60,7 @@ export default {
   @include responsive(tablet) {
     position: static;
     min-height: 31rem; // Calculated from image height (40rem) and header height (8rem) - margin-bottom (1rem)
+    margin-bottom: 8rem;
   }
 
   &__content {
