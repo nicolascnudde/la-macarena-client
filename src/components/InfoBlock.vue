@@ -29,7 +29,7 @@ export default {
   margin-bottom: 5rem;
 
   @include responsive(tablet) {
-    background: url('@/assets/icons/what-we-do-title.svg') no-repeat center;
+    background: url('@/assets/images/what-we-do-title.svg') no-repeat center;
     background-size: 100%;
     margin-bottom: 8rem;
   }

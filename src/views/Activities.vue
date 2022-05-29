@@ -2,10 +2,11 @@
 import { useMeta } from 'vue-meta';
 
 import BaseLayout from '../layouts/BaseLayout.vue';
+import TitleAndText from '../components/TitleAndText.vue';
 
 export default {
   name: 'Activities',
-  components: { BaseLayout },
+  components: { BaseLayout, TitleAndText },
   setup() {
     useMeta({ title: 'Activities' });
   },
@@ -14,17 +15,10 @@ export default {
 
 <template>
   <BaseLayout>
-    <h1>Activities</h1>
-
-    <p>
+    <TitleAndText bgImage="blue-brush.png" type="h" title="Activities">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-    </p>
+      tempor incididunt ut labore et dolore magna aliqua.
+    </TitleAndText>
   </BaseLayout>
 </template>
 
