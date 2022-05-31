@@ -36,7 +36,9 @@ export default {
 
   &__container {
     background: linear-gradient(90deg, $clrRed 50%, transparent 0);
-    background-position: calc(25vw - 1rem); // Center the background minus 1 rem padding from the container parent
+    background-position: calc(
+      25vw - 1rem
+    ); // Center the background minus 1 rem padding from the container parent
 
     @include responsive(tablet) {
       position: relative;
@@ -62,9 +64,11 @@ export default {
 
       @include responsive(tablet) {
         position: absolute;
-        top: 44.5%;
-        left: -8.5rem;
+        top: 44%;
+        left: -75%;
         transform: rotate(90deg);
+        width: 30rem; // Added the same width as the rectangle background's height to make sure the positioning is correct
+        text-align: center;
       }
     }
 
