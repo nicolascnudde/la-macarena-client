@@ -15,14 +15,20 @@ export default {
       default: '',
     },
   },
+  methods: {
+    // Check if the type property is h1
+    isH1() {
+      return this.type === 'h1' ?? this.type === 'H1';
+    },
+  }
 };
 </script>
 
 <template>
-  <section class="title-text">
-    <div class="title-text__container container">
-      <div :class="[`title-text__content ${type === 'h1' ?? type === 'H1' ? 'title-text__content--flex' : ''}`]">
-        <h1 class="title-text__content__title" v-if="type === 'h1' ?? type === 'H1'">{{ title }}</h1>
+  <section :class="[`title-text ${isH1() ? 'title-text--h1' : ''}`]">
+    <div :class="[`title-text__container ${isH1() ? 'container' : ''}`]">
+      <div :class="[`title-text__content ${isH1() ? 'title-text__content--flex' : ''}`]">
+        <h1 class="title-text__content__title" v-if="isH1()">{{ title }}</h1>
         <h2 class="title-text__content__title" v-else>{{ title }}</h2>
 
         <p class="title-text__content__description">
@@ -39,11 +45,19 @@ export default {
 
 <style lang="scss">
 .title-text {
-  margin-bottom: 5rem;
   position: relative;
+  margin-bottom: 2rem;
 
   @include responsive(tablet) {
-    margin-bottom: 8rem;
+    margin-bottom: 3rem;
+  }
+
+  &--h1 {
+    margin-bottom: 5rem;
+
+    @include responsive(tablet) {
+      margin-bottom: 8rem;
+    }
   }
 
   &__content {
