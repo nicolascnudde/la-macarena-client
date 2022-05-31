@@ -30,5 +30,13 @@ export default {
     flex-wrap: wrap;
     gap: 2%;
   }
+
+  &__item {
+    margin-bottom: 3rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 </style>

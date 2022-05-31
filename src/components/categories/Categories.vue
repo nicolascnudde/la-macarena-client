@@ -36,6 +36,10 @@ export default {
 
 <style lang="scss">
 .categories {
-  display: block;
+  margin-bottom: 5rem;
+
+  @include responsive(tablet) {
+    margin-bottom: 8rem;
+  }
 }
 </style>
