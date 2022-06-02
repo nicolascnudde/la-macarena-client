@@ -41,5 +41,9 @@ export default {
   @include responsive(tablet) {
     margin-bottom: 8rem;
   }
+
+  .title-text {
+    margin-bottom: 0; // Remove the margin bottom because we're adding margin top on the cards in CategoriesListItem.vue
+  }
 }
 </style>

@@ -1,24 +1,24 @@
 <script>
-import CategoriesListItem from './CategoriesListItem.vue';
+import UspsListItem from './UspsListItem.vue';
 
 export default {
   name: 'CategoriesList',
-  components: { CategoriesListItem },
+  components: { UspsListItem },
 };
 </script>
 
 <template>
-  <ul class="categories__list">
-    <CategoriesListItem />
+  <ul class="usps__list">
+    <UspsListItem />
 
-    <CategoriesListItem />
+    <UspsListItem />
 
-    <CategoriesListItem />
+    <UspsListItem />
   </ul>
 </template>
 
 <style lang="scss">
-.categories__list {
+.usps__list {
   @include responsive(tablet) {
     display: flex;
     flex-wrap: wrap;
@@ -29,6 +29,10 @@ export default {
     display: flex;
     flex-wrap: wrap;
     gap: 2%;
+  }
+
+  &__item {
+    margin-top: 3rem;
   }
 }
 </style>

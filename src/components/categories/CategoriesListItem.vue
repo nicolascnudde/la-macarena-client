@@ -37,6 +37,8 @@ export default {
 
 <style lang="scss">
 .categories__list__item {
+  margin-top: 3rem;
+
   @include responsive(tablet) {
     flex-basis: 48%;
   }
