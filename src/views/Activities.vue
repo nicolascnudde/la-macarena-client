@@ -3,11 +3,12 @@ import { useMeta } from 'vue-meta';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import TitleAndText from '@/components/TitleAndText.vue';
+import ActivitiesSection from '@/components/activities/ActivitiesSection.vue';
 import Categories from '@/components/categories/Categories.vue';
 
 export default {
   name: 'Activities',
-  components: { BaseLayout, Categories, TitleAndText },
+  components: { ActivitiesSection, BaseLayout, Categories, TitleAndText },
   setup() {
     useMeta({ title: 'Activities' });
   },
@@ -24,6 +25,8 @@ export default {
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
     </TitleAndText>
+
+    <ActivitiesSection />
 
     <Categories />
   </BaseLayout>

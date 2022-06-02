@@ -36,7 +36,7 @@ export default {
         </p>
       </div>
 
-      <div class="title-text__image">
+      <div v-if="bgImageUrl !== ''" class="title-text__image">
         <img :src="bgImageUrl" />
       </div>
     </div>

@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <section class="categories">
+  <section class="categories" id="categories">
     <div class="container">
       <TitleAndText
         bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846485/bg-images/Brush_Light_Blue_eywnk7.png"
