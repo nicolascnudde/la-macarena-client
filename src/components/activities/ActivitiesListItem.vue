@@ -23,7 +23,7 @@ export default {
       default: 'Workshops',
     },
     price: {
-      type: String,
+      type: Number,
       default: 89,
     },
     date: {
@@ -49,6 +49,7 @@ export default {
 
           <span class="upcoming-activities__list__item--top__box">{{ date }}</span>
         </div>
+
         <a href="#categories">
           <span class="upcoming-activities__list__item--top__category">{{ category }}</span>
         </a>
