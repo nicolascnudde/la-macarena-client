@@ -49,7 +49,7 @@ export default {
 <style lang="scss">
 .goals__list__item {
   margin-top: 3rem;
-  padding-bottom: 17rem;
+  padding-bottom: 10rem;
   position: relative;
 
   &:last-child {
@@ -60,9 +60,14 @@ export default {
     }
   }
 
+  @include responsive(tablet) {
+    padding-bottom: 15rem;
+  }
+
   @include responsive(desktop) {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 17rem;
   }
 
   &__content {
@@ -103,10 +108,18 @@ export default {
 
   &__separator {
     position: absolute;
-    width: 25%;
+    width: 75%;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
+
+    @include responsive(tablet) {
+      width: 50%;
+    }
+
+    @include responsive(desktop) {
+      width: 25%;
+    }
   }
 }
 </style>
