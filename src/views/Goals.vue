@@ -1,30 +1,35 @@
 <script>
 import { useMeta } from 'vue-meta';
 
-import BaseLayout from '../layouts/BaseLayout.vue';
+import BaseLayout from '@/layouts/BaseLayout.vue';
+import GoalsSection from '@/components/goals/GoalsSection.vue';
+import TitleAndText from '@/components/TitleAndText.vue';
 
 export default {
   name: 'Goals',
-  components: { BaseLayout },
+  components: { BaseLayout, GoalsSection, TitleAndText },
   setup() {
-    useMeta({ title: 'Goals' });
+    useMeta({
+      title: 'Goals',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    });
   },
 };
 </script>
 
 <template>
   <BaseLayout>
-    <h1>Goals</h1>
-
-    <p>
+    <TitleAndText
+      bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846484/bg-images/Brush_Green_yuvrrs.png"
+      type="h1"
+      title="Goals"
+    >
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-    </p>
+      tempor incididunt ut labore et dolore magna aliqua.
+    </TitleAndText>
+
+    <GoalsSection />
   </BaseLayout>
 </template>
 
