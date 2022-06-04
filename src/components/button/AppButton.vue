@@ -11,25 +11,25 @@ export default {
     },
     link: {
       type: String,
-      default: '/',
+      default: '',
     },
   },
 };
 </script>
 
 <template>
-  <button v-if="!link" :class="`btn btn--${type}`">
-    <router-link :to="link">
+  <button :class="`btn btn--${type}`">
+    <router-link v-if="link" :to="link">
       <span class="btn__text"><slot></slot></span>
 
       <ArrowRight class="btn__icon" />
     </router-link>
-  </button>
 
-  <button v-else :class="`btn btn--${type}`">
-    <span class="btn__text"><slot></slot></span>
+    <div v-else class="btn__content">
+      <span class="btn__text"><slot></slot></span>
 
-    <ArrowRight class="btn__icon" />
+      <ArrowRight class="btn__icon" />
+    </div>
   </button>
 </template>
 
