@@ -5,6 +5,11 @@ import emailjs from '@emailjs/browser';
 
 import AppButton from '../button/AppButton.vue';
 
+// Load the environment variables for the email service
+const serviceId = import.meta.env.VITE_EMAIL_JS_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAIL_JS_CONTACT_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY;
+
 export default {
   name: 'ContactForm',
   components: {
@@ -16,15 +21,9 @@ export default {
   data() {
     // Using Yup to validate the form
     const validationSchema = Yup.object().shape({
-      name: Yup.string()
-        .required('name is required')
-        .min(2, 'name is too short'),
-      email: Yup.string()
-        .required('email is required')
-        .email('email is invalid'),
-      message: Yup.string()
-        .required('message is required')
-        .min(10, 'message is too short'),
+      name: Yup.string().required('name is required').min(2, 'name is too short'),
+      email: Yup.string().required('email is required').email('email is invalid'),
+      message: Yup.string().required('message is required').min(10, 'message is too short'),
     });
 
     return {
@@ -37,10 +36,10 @@ export default {
       try {
         // Send the email with the emailjs API keys
         emailjs.sendForm(
-          'service_0z7ibx8',
-          'template_ql3v9mr',
+          serviceId,
+          templateId,
           this.$refs.contact_form,
-          'yuamOnHSsNcJNHWot'
+          publicKey,
         );
       } catch (err) {
         console.log(err);
