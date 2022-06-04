@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="chevron" transform="translate(24 24) rotate(180)">
+    <g id="Icon-frame-24">
+      <rect id="Rectangle_1200" data-name="Rectangle 1200" width="24" height="24" fill="none"/>
+    </g>
+    <path id="Path_727" data-name="Path 727" d="M453.738,116.738a.818.818,0,0,1,1.154,0l9.2,9.205,9.2-9.205a.816.816,0,0,1,1.154,1.154l-9.78,9.78a.818.818,0,0,1-1.154,0l-9.78-9.78a.817.817,0,0,1,.006-1.154Z" transform="translate(-452.096 -109.742)" fill="#100040" fill-rule="evenodd"/>
+  </g>
+</svg>
