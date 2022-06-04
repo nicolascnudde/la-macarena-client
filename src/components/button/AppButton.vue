@@ -18,12 +18,18 @@ export default {
 </script>
 
 <template>
-  <button :class="`btn btn--${type}`">
+  <button v-if="!link" :class="`btn btn--${type}`">
     <router-link :to="link">
       <span class="btn__text"><slot></slot></span>
 
       <ArrowRight class="btn__icon" />
     </router-link>
+  </button>
+
+  <button v-else :class="`btn btn--${type}`">
+    <span class="btn__text"><slot></slot></span>
+
+    <ArrowRight class="btn__icon" />
   </button>
 </template>
 

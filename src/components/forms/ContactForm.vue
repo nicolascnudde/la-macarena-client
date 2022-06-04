@@ -1,5 +1,5 @@
 <script>
-import { Form as VeeForm, Field, Form, ErrorMessage } from 'vee-validate';
+import { ErrorMessage, Field, Form as VeeForm } from 'vee-validate';
 import * as Yup from 'yup';
 import emailjs from '@emailjs/browser';
 
@@ -14,28 +14,43 @@ export default {
     VeeForm,
   },
   data() {
+    // Using Yup to validate the form
     const validationSchema = Yup.object().shape({
-      name: Yup.string().required('name is required').min(2, 'name is too short'),
-      email: Yup.string().required('email is required').email('email is invalid'),
-      message: Yup.string().required('message is required').min(10, 'message is too short'),
+      name: Yup.string()
+        .required('name is required')
+        .min(2, 'name is too short'),
+      email: Yup.string()
+        .required('email is required')
+        .email('email is invalid'),
+      message: Yup.string()
+        .required('message is required')
+        .min(10, 'message is too short'),
     });
 
     return {
       validationSchema,
+      isSubmitted: false,
     };
   },
   methods: {
     onSubmit() {
       try {
+        // Send the email with the emailjs API keys
         emailjs.sendForm(
           'service_0z7ibx8',
           'template_ql3v9mr',
           this.$refs.contact_form,
           'yuamOnHSsNcJNHWot'
         );
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
       }
+
+      // Reset the contact form
+      this.$refs.contact_form.reset();
+
+      // Show a success message
+      this.isSubmitted = true;
     },
   },
 };
@@ -47,23 +62,37 @@ export default {
       v-slot="{ handleSubmit }"
       :validation-schema="validationSchema"
       as="div"
-      class="container"
+      class="contact-form__container container"
     >
-      <form class="contact-form__form" ref="contact_form" @submit="handleSubmit($event, onSubmit)">
-        <div class="contact-form__form__field">
+      <div class="contact-form__content">
+        <h2 class="contact-form__content__title">Let's Talk</h2>
+        <div class="contact-form__content__image">
+          <img
+            src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp"
+          />
+        </div>
+      </div>
+
+      <form
+        v-if="!isSubmitted"
+        class="contact-form__form"
+        ref="contact_form"
+        @submit="handleSubmit($event, onSubmit)"
+      >
+        <div class="contact-form__form__field contact-form__form__field--name">
           <label for="name">Name</label>
 
           <Field
             id="name"
             name="name"
             type="text"
-            placeholder="What should we call you?"
+            placeholder="Como te llamas?"
           />
 
           <ErrorMessage class="contact-form__form__field__alert" name="name" />
         </div>
 
-        <div class="contact-form__form__field">
+        <div class="contact-form__form__field contact-form__form__field--email">
           <label for="email">Email</label>
 
           <Field
@@ -76,7 +105,9 @@ export default {
           <ErrorMessage class="contact-form__form__field__alert" name="email" />
         </div>
 
-        <div class="contact-form__form__field">
+        <div
+          class="contact-form__form__field contact-form__form__field--message"
+        >
           <label for="message">Message</label>
 
           <Field
@@ -92,9 +123,13 @@ export default {
             name="message"
           />
         </div>
-        
-        <input class="btn btn--primary" type="submit" value="Send" />
+
+        <AppButton type="secondary">Send</AppButton>
       </form>
+
+      <p v-if="isSubmitted" class="contact-form__form__success">
+        Gracias! Your message has been sent.
+      </p>
     </VeeForm>
   </section>
 </template>
@@ -109,7 +144,43 @@ export default {
     margin-bottom: 8rem;
   }
 
+  &__container {
+    @include responsive(desktop) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__content {
+    @include responsive(desktop) {
+      flex-basis: 25%;
+    }
+
+    &__title {
+      margin-bottom: 2rem;
+    }
+
+    &__image {
+      display: none;
+
+      @include responsive(desktop) {
+        display: block;
+      }
+
+      img {
+        border-radius: 70px 30px 70px 30px;
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+      }
+    }
+  }
+
   &__form {
+    @include responsive(desktop) {
+      flex-basis: 66.67%;
+    }
+
     &__field {
       display: flex;
       flex-direction: column;
@@ -133,13 +204,24 @@ export default {
         border-bottom: 1px solid $clrPrimary;
       }
 
+      textarea {
+        resize: vertical;
+      }
+
       &__alert {
+        color: red;
+        font-size: $fontSize14;
         position: absolute;
         top: 0;
         right: 0;
-        font-size: $fontSize14;
-        color: red;
       }
+    }
+
+    &__success {
+      flex-basis: 66.67%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
