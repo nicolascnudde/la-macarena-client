@@ -16,9 +16,9 @@ export default {
 </template>
 
 <style lang="scss">
-.goals__list {
+/* .goals__list {
   display: flex;
   flex-direction: column;
   gap: 15rem;
-}
+} */
 </style>

@@ -1,6 +1,9 @@
 <script>
+import ConnectingArrowIcon from '@/assets/icons/connecting-arrow.svg?component';
+
 export default {
   name: 'CategoriesListItem',
+  components: { ConnectingArrowIcon },
   props: {
     image: {
       type: String,
@@ -38,12 +41,24 @@ export default {
 
       <p class="goals__list__item__content__description">{{ description }}</p>
     </div>
+
+    <ConnectingArrowIcon class="goals__list__item__separator" />
   </li>
 </template>
 
 <style lang="scss">
 .goals__list__item {
   margin-top: 3rem;
+  padding-bottom: 17rem;
+  position: relative;
+
+  &:last-child {
+    padding-bottom: 0;
+
+    .goals__list__item__separator {
+      display: none;
+    }
+  }
 
   @include responsive(desktop) {
     display: flex;
@@ -64,13 +79,13 @@ export default {
   &__image {
     margin-bottom: 1rem;
 
-    &--right {
-      order: 1;
-    }
-
     @include responsive(desktop) {
       flex-basis: 48%;
       margin-bottom: 0;
+    }
+
+    &--right {
+      order: 1;
     }
 
     img {
@@ -78,7 +93,20 @@ export default {
       width: 100%;
       max-width: 100%;
       object-fit: cover;
+
+      @include responsive(desktop) {
+        width: 100%;
+        height: 40rem;
+      }
     }
+  }
+
+  &__separator {
+    position: absolute;
+    width: 25%;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
   }
 }
 </style>
