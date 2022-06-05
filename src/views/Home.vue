@@ -5,12 +5,13 @@ import BaseLayout from '@/layouts/BaseLayout.vue';
 import Hero from '@/components/hero/Hero.vue';
 import InfoBlock from '../components/InfoBlock.vue';
 import Cta from '../components/cta/Cta.vue';
+import TeamSection from '@/components/team/TeamSection.vue';
 
 export default {
   name: 'Home',
-  components: { BaseLayout, Cta, Hero, InfoBlock },
+  components: { BaseLayout, Cta, Hero, InfoBlock, TeamSection },
   setup() {
-    useMeta({ title: '' });
+    useMeta({ title: 'Hola!' });
   },
 };
 </script>
@@ -25,6 +26,8 @@ export default {
     />
 
     <InfoBlock />
+
+    <TeamSection />
 
     <Cta />
   </BaseLayout>
