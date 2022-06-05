@@ -38,10 +38,6 @@ export default {
 <style lang="scss">
 .usps__list__item {
   @include responsive(tablet) {
-    flex-basis: 48%;
-  }
-
-  @include responsive(desktop) {
     flex-basis: 32%;
   }
 

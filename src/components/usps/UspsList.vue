@@ -22,12 +22,6 @@ export default {
   @include responsive(tablet) {
     display: flex;
     flex-wrap: wrap;
-    gap: 4%;
-  }
-
-  @include responsive(desktop) {
-    display: flex;
-    flex-wrap: wrap;
     gap: 2%;
   }
 

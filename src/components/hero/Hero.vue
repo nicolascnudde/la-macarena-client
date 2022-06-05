@@ -24,6 +24,10 @@ export default {
       type: String,
       default: '#',
     },
+    noButton: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
@@ -38,6 +42,7 @@ export default {
       </p>
 
       <AppButton
+        v-if="!noButton"
         class="hero__content__button"
         type="secondary"
         :link="buttonLink"
@@ -54,7 +59,7 @@ export default {
 <style lang="scss">
 .hero {
   margin-bottom: 5rem;
-  min-height: 31rem; // Calculated from image height (30rem) and the absolute positioning (1rem) from the top
+  min-height: 31.5rem; // Calculated from image height (30rem) and the absolute positioning (1rem) from the top
   position: relative;
 
   @include responsive(tablet) {
@@ -84,7 +89,7 @@ export default {
 
   &__image {
     position: absolute;
-    top: 1rem;
+    top: 1.5rem;
     opacity: 0.4;
     z-index: -1;
 

@@ -22,6 +22,7 @@ export default {
     <Hero
       title="About us"
       description="This is a dummy description for the hero section on the about page. This will be replaced with a real description from the CMS."
+      noButton
     />
 
     <OurStory />
