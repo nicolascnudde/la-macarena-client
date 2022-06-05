@@ -1,13 +1,15 @@
 <script>
 import { useMeta } from 'vue-meta';
 
-import Usps from '../components/usps/Usps.vue';
-
-import BaseLayout from '../layouts/BaseLayout.vue';
+import BaseLayout from '@/layouts/BaseLayout.vue';
+import Hero from '@/components/hero/Hero.vue';
+import TeamSection from '@/components/team/TeamSection.vue';
+import TitleAndText from '@/components/TitleAndText.vue';
+import Usps from '@/components/usps/Usps.vue';
 
 export default {
   name: 'About',
-  components: { BaseLayout, Usps },
+  components: { BaseLayout, Hero, TitleAndText, Usps, TeamSection },
   setup() {
     useMeta({ title: 'About' });
   },
@@ -16,8 +18,13 @@ export default {
 
 <template>
   <BaseLayout>
-    <h1>About us</h1>
+    <Hero
+      title="About us"
+      description="This is a dummy description for the hero section on the about page. This will be replaced with a real description from the CMS."
+    />
 
     <Usps />
+
+    <TeamSection imageRight />
   </BaseLayout>
 </template>
