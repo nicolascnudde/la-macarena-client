@@ -15,6 +15,11 @@ export default {
       default:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
+    // By using this prop we can easily switch the position (order) of the image
+    imageRight: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
@@ -22,10 +27,8 @@ export default {
 <template>
   <section class="team">
     <div class="team__container container">
-      <div class="team__image">
-        <img
-          src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp"
-        />
+      <div :class="`team__image ${imageRight ? 'team__image--right' : ''}`">
+        <img src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp" />
       </div>
 
       <div class="team__content">
@@ -51,10 +54,6 @@ export default {
     position: relative;
   }
 
-  .title-text {
-    margin-bottom: 0; // Remove the margin bottom because we're adding margin top on the cards in TeamListItem.vue
-  }
-
   &__container {
     display: flex;
     justify-content: space-between;
@@ -73,10 +72,25 @@ export default {
         border-radius: 0 75px 150px 0;
       }
     }
+
+    &--right {
+      @include responsive(desktop) {
+        display: block;
+        flex-basis: 48%;
+        order: 1;
+
+        img {
+          margin-left: 2rem; // Mitigate the margin from the wrapper's padding of 2rem
+          border-radius: 75px 0 0 150px;
+        }
+      }
+    }
   }
 
   &__content {
-    flex-basis: 48%;
+    @include responsive(desktop) {
+      flex-basis: 48%;
+    }
   }
 }
 </style>

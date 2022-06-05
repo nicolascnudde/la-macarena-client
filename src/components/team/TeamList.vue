@@ -19,6 +19,17 @@ export default {
 
 <style lang="scss">
 .team__list {
+  background: url('https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846498/bg-images/Brush_Pink_1_q1htng.png')
+    center/100% no-repeat;
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  width: 75%;
+  margin: 0 auto;
+
+  @include responsive(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
