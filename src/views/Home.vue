@@ -32,15 +32,3 @@ export default {
     <Cta />
   </BaseLayout>
 </template>
-
-<style lang="scss">
-h1 {
-  @include responsive(tablet) {
-    color: lightcoral;
-  }
-
-  @include responsive(desktop) {
-    color: lightblue;
-  }
-}
-</style>
