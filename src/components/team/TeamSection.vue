@@ -28,7 +28,9 @@ export default {
   <section class="team">
     <div class="team__container container">
       <div :class="`team__image ${imageRight ? 'team__image--right' : ''}`">
-        <img src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp" />
+        <img
+          src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp"
+        />
       </div>
 
       <div class="team__content">
@@ -70,6 +72,11 @@ export default {
       img {
         margin-left: -2rem; // Mitigate the margin from the wrapper's padding of 2rem
         border-radius: 0 75px 150px 0;
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        transform: translateY(-50%);
+        left: 0;
       }
     }
 
@@ -82,6 +89,8 @@ export default {
         img {
           margin-left: 2rem; // Mitigate the margin from the wrapper's padding of 2rem
           border-radius: 75px 0 0 150px;
+          left: unset;
+          right: 0;
         }
       }
     }

@@ -20,7 +20,7 @@ export default {
 <style lang="scss">
 .team__list {
   background: url('https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846498/bg-images/Brush_Pink_1_q1htng.png')
-    center/100% no-repeat;
+    center/200% no-repeat;
   position: relative;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -30,6 +30,7 @@ export default {
 
   @include responsive(tablet) {
     grid-template-columns: repeat(2, 1fr);
+    background-size: 100%;
   }
 }
 </style>
