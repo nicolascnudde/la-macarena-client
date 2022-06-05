@@ -15,7 +15,7 @@ const routes = [
     component: () => import('@/views/Activities.vue'),
   },
   {
-    path: '/activities/:id',
+    path: '/activities/:id-:title',
     name: 'Activity',
     component: () => import('@/views/Activity.vue'),
   },

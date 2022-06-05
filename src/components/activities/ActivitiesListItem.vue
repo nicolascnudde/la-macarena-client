@@ -32,7 +32,7 @@ export default {
     },
     key: {
       type: String,
-      default: '',
+      default: '1',
     },
   },
 };

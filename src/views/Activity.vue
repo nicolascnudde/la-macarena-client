@@ -1,5 +1,6 @@
 <script>
 import { useMeta } from 'vue-meta';
+import { useRoute } from 'vue-router';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import TitleAndText from '@/components/TitleAndText.vue';
@@ -9,6 +10,8 @@ export default {
   components: { BaseLayout, TitleAndText },
   setup() {
     useMeta({ title: 'Activity' });
+    const route = useRoute();
+    console.log(route.params);
   },
 };
 </script>
