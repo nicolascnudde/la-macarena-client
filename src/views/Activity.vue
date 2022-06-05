@@ -11,7 +11,8 @@ export default {
   setup() {
     useMeta({ title: 'Activity' });
     const route = useRoute();
-    console.log(route.params);
+    const id = route.params.id;
+    console.log(id);
   },
 };
 </script>

@@ -38,7 +38,7 @@ html {
 .fade {
   &-enter-active,
   &-leave-active {
-    transition: opacity $transitionNormal;
+    transition: opacity $transitionFast;
   }
 
   &-enter-from,
