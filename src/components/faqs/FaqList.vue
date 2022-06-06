@@ -1,24 +1,40 @@
 <script>
 import FaqListItem from './FaqListItem.vue';
+import gql from 'graphql-tag';
 
 export default {
   name: 'FaqList',
   components: { FaqListItem },
+  apollo: {
+    faqs: {
+      query: gql`
+        query {
+          faqs {
+            id
+            question
+            answer
+          }
+        }
+      `,
+    },
+  },
 };
 </script>
 
 <template>
-  <ul class="faq__list">
-    <FaqListItem />
+  <div v-if="$apollo.queries.faqs.loading" style="font-size: 80px;">Loading...</div>
 
-    <FaqListItem />
-
-    <FaqListItem />
+  <ul class="faq__list" v-for="faq in faqs" :key="faq.id">
+    <FaqListItem :question="faq.question" :answer="faq.answer" />
   </ul>
 </template>
 
 <style lang="scss">
 .faq__list {
-  display: block;
+  @include responsive(desktop) {
+    width: 66.67%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 </style>
