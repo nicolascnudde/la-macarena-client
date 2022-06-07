@@ -1,5 +1,6 @@
 <script>
 import AppButton from '../button/AppButton.vue';
+import gql from 'graphql-tag';
 
 export default {
   name: 'ActivitiesList',
@@ -7,39 +8,44 @@ export default {
   props: {
     image: {
       type: String,
-      default: 'asdf',
     },
     title: {
       type: String,
-      default: 'Painting and Yoga',
     },
     description: {
       type: String,
-      default:
-        'This is the description of an activity. Placeholder text until the categories are loaded in from the cms.',
     },
-    category: {
+    categoryTitle: {
       type: String,
-      default: 'Workshops',
     },
     price: {
       type: Number,
-      default: 89,
     },
     date: {
       type: String,
-      default: '03/07',
     },
-    key: {
+    toDate: {
       type: String,
-      default: '1',
+    },
+    id: {
+      type: String,
+    },
+  },
+  methods: {
+    // Convert the TZ date string to make it readable
+    parseDate(date) {
+      const parsedDate = new Date(date);
+      const month = parsedDate.getMonth() + 1;
+      const day = parsedDate.getDate();
+
+      return `${day}/${month}`;
     },
   },
 };
 </script>
 
 <template>
-  <li class="upcoming-activities__list__item" :key="key">
+  <li class="upcoming-activities__list__item">
     <div class="upcoming-activities__list__item--top">
       <h3 class="upcoming-activities__list__item--top__title">{{ title }}</h3>
 
@@ -47,11 +53,12 @@ export default {
         <div class="upcoming-activities__list__item--top__box__container">
           <span class="upcoming-activities__list__item--top__box">€ {{ price }}</span>
 
-          <span class="upcoming-activities__list__item--top__box">{{ date }}</span>
+          <span v-if="!toDate" class="upcoming-activities__list__item--top__box">{{ parseDate(date) }}</span>
+          <span v-else class="upcoming-activities__list__item--top__box">{{ parseDate(date) }} – {{ parseDate(toDate) }}</span>
         </div>
 
         <a href="#categories">
-          <span class="upcoming-activities__list__item--top__category">{{ category }}</span>
+          <span class="upcoming-activities__list__item--top__category">{{ categoryTitle }}</span>
         </a>
       </div>
     </div>
@@ -67,9 +74,9 @@ export default {
 
       <AppButton
         type="secondary"
-        :link="`/activities/${key}-${title.toLowerCase().replaceAll(' ', '-')}`"
+        :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
       >
-        Book
+        Reserve / More info
       </AppButton>
     </div>
   </li>

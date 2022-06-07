@@ -8,7 +8,7 @@ export default {
   apollo: {
     faqs: {
       query: gql`
-        query {
+        query faqs {
           faqs {
             id
             question
