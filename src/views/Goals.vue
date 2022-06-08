@@ -5,10 +5,11 @@ import { useMeta } from 'vue-meta';
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import GoalsSection from '@/components/goals/GoalsSection.vue';
 import TitleAndText from '@/components/TitleAndText.vue';
+import Cta from '../components/cta/Cta.vue';
 
 export default {
   name: 'Goals',
-  components: { BaseLayout, GoalsSection, TitleAndText },
+  components: { BaseLayout, Cta, GoalsSection, TitleAndText },
   setup() {
     useMeta({
       title: 'Goals',
@@ -46,6 +47,8 @@ export default {
     </TitleAndText>
 
     <GoalsSection />
+
+    <Cta />
   </BaseLayout>
 </template>
 

@@ -6,10 +6,11 @@ import BaseLayout from '@/layouts/BaseLayout.vue';
 import TitleAndText from '@/components/TitleAndText.vue';
 import ActivitiesSection from '@/components/activities/ActivitiesSection.vue';
 import Categories from '@/components/categories/Categories.vue';
+import Cta from '../components/cta/Cta.vue';
 
 export default {
   name: 'Activities',
-  components: { ActivitiesSection, BaseLayout, Categories, TitleAndText },
+  components: { ActivitiesSection, BaseLayout, Cta, Categories, TitleAndText },
   setup() {
     useMeta({ title: 'Activities' });
   },
@@ -45,6 +46,8 @@ export default {
     <ActivitiesSection />
 
     <Categories />
+
+    <Cta />
   </BaseLayout>
 </template>
 

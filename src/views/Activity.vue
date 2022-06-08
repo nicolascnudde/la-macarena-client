@@ -1,14 +1,15 @@
 <script>
 import { useMeta } from 'vue-meta';
-import { useRoute } from 'vue-router';
 import gql from 'graphql-tag';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import TitleAndText from '@/components/TitleAndText.vue';
+import Cta from '../components/cta/Cta.vue';
+import Hero from '../components/hero/Hero.vue';
 
 export default {
   name: 'Activity',
-  components: { BaseLayout, TitleAndText },
+  components: { BaseLayout, Cta, TitleAndText, Hero },
   setup() {
     useMeta({ title: 'Activity' });
   },
@@ -25,6 +26,9 @@ export default {
             id
             title
             description
+            image {
+              publicUrl
+            }
             price
             slots
             date
@@ -45,21 +49,24 @@ export default {
   <div v-if="this.$apollo.queries.activity.loading">Loading...</div>
 
   <BaseLayout v-else>
-    <TitleAndText
-      bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846484/bg-images/Brush_blue_bxzmpm.png"
-      type="h1"
+    <Hero
+      :image="activity.image.publicUrl"
       :title="activity.title"
-    >
-      {{ activity.description }}
-    </TitleAndText>
+      :description="activity.description"
+      noButton
+    />
 
-    <section class="container">
-      <p>Slots: {{ activity.slots }}</p>
+    <section class="activity-details">
+      <div class="container">
+        <p>Slots: {{ activity.slots }}</p>
 
-      <p>Price: {{ activity.price }}</p>
+        <p>Price: {{ activity.price }}</p>
 
-      <p>Date: {{ activity.date }}</p>
+        <p>Date: {{ activity.date }}</p>
+      </div>
     </section>
+
+    <Cta />
   </BaseLayout>
 </template>
 

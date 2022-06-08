@@ -7,11 +7,12 @@ import Hero from '@/components/hero/Hero.vue';
 import TeamSection from '@/components/team/TeamSection.vue';
 import TitleAndText from '@/components/TitleAndText.vue';
 import Usps from '@/components/usps/Usps.vue';
-import OurStory from '../components/our-story/OurStory.vue';
+import OurStory from '@/components/our-story/OurStory.vue';
+import Cta from '@/components/cta/Cta.vue';
 
 export default {
   name: 'About',
-  components: { BaseLayout, Hero, TitleAndText, Usps, TeamSection, OurStory },
+  components: { BaseLayout, Cta, Hero, OurStory, TeamSection, TitleAndText, Usps },
   setup() {
     useMeta({ title: 'About' });
   },
@@ -50,6 +51,8 @@ export default {
 
     <Usps />
 
-    <TeamSection imageRight />
+    <TeamSection />
+
+    <Cta />
   </BaseLayout>
 </template>
