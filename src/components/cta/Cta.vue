@@ -48,7 +48,7 @@ export default {
       </div>
 
       <div class="cta__content__image cta__content__image--desktop">
-        <img :src="content.ctaImage.publicUrl" :alt="title" />
+        <img :src="content.ctaImage.publicUrl" :alt="content.ctaTitle" />
       </div>
     </div>
   </section>
