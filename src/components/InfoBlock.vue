@@ -1,6 +1,15 @@
 <script>
 export default {
   name: 'InfoBlock',
+  props: {
+    title: {
+      type: String,
+      default: 'Who we are',
+    },
+    description: {
+      type: String,
+    },
+  },
 };
 </script>
 
@@ -9,13 +18,10 @@ export default {
     <div class="container">
       <div class="info-block__container">
         <div class="info-block__content">
-          <h2 class="info-block__content__title">What we do</h2>
+          <h2 class="info-block__content__title">{{ title }}</h2>
 
           <p class="info-block__content__text">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.
+            {{ description }}
           </p>
         </div>
       </div>

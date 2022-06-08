@@ -1,41 +1,43 @@
 <script>
+import gql from 'graphql-tag';
+
 import TeamList from './TeamList.vue';
 import TitleAndText from '../TitleAndText.vue';
 
 export default {
   name: 'Team',
   components: { TeamList, TitleAndText },
-  props: {
-    title: {
-      type: String,
-      default: 'Who we are',
-    },
-    description: {
-      type: String,
-      default:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    },
-    // By using this prop we can easily switch the position (order) of the image
-    imageRight: {
-      type: Boolean,
-      default: false,
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            whoWeAreTitle
+            whoWeAreDescription
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
     },
   },
 };
 </script>
 
 <template>
-  <section class="team">
+  <section v-if="!this.$apollo.loading" class="team">
     <div class="team__container container">
       <div :class="`team__image ${imageRight ? 'team__image--right' : ''}`">
         <img
-          src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp"
+          src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp"
         />
       </div>
 
       <div class="team__content">
-        <TitleAndText type="h2" :title="title">
-          {{ description }}
+        <TitleAndText type="h2" :title="content.whoWeAreTitle">
+          {{ content.whoWeAreDescription }}
         </TitleAndText>
 
         <TeamList />

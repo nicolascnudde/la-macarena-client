@@ -22,10 +22,17 @@ export default {
 </script>
 
 <template>
-  <div v-if="$apollo.queries.faqs.loading" style="font-size: 80px;">Loading...</div>
+  <div v-if="$apollo.queries.faqs.loading" style="font-size: 80px">
+    Loading...
+  </div>
 
-  <ul class="faq__list" v-for="faq in faqs" :key="faq.id">
-    <FaqListItem :question="faq.question" :answer="faq.answer" />
+  <ul class="faq__list">
+    <FaqListItem
+      v-for="faq in faqs"
+      :key="faq.id"
+      :question="faq.question"
+      :answer="faq.answer"
+    />
   </ul>
 </template>
 

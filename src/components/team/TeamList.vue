@@ -1,19 +1,42 @@
 <script>
+import gql from 'graphql-tag';
+
 import TeamListItem from './TeamListItem.vue';
 
 export default {
   name: 'TeamList',
   components: { TeamListItem },
+  apollo: {
+    members: {
+      query: gql`
+        query members {
+          members {
+            id
+            firstName
+            lastName
+            image {
+              publicUrl
+            }
+          }
+        }
+      `,
+    },
+  },
 };
 </script>
 
 <template>
   <ul class="team__list">
-    <TeamListItem />
-
-    <TeamListItem />
-
-    <TeamListItem />
+    <TeamListItem
+      v-for="member in members"
+      :key="member.id"
+      :firstName="member.firstName"
+      :image="
+        member.image
+          ? member.image.publicUrl
+          : 'https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp'
+      "
+    />
   </ul>
 </template>
 

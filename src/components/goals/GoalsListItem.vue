@@ -5,35 +5,27 @@ export default {
   name: 'CategoriesListItem',
   components: { ConnectingArrowIcon },
   props: {
-    image: {
-      type: String,
-      default: '',
-    },
     title: {
       type: String,
-      default: 'Future goal',
     },
     description: {
       type: String,
-      default:
-        'This is the description of a future goal. Placeholder text until the goal(s) are loaded in from the cms.',
+    },
+    image: {
+      type: String,
     },
     imageRight: {
       type: Boolean,
       default: false,
-    },
-    key: {
-      type: String,
-      default: '',
     },
   },
 };
 </script>
 
 <template>
-  <li class="goals__list__item" :key="key">
+  <li class="goals__list__item">
     <div :class="[`goals__list__item__image ${imageRight ? 'goals__list__item__image--right' : '' }`]">
-      <img src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp" />
+      <img :src="image" />
     </div>
 
     <div class="goals__list__item__content">

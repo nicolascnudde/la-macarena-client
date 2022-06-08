@@ -1,24 +1,45 @@
 <script>
+import gql from 'graphql-tag';
+
 import AppButton from '../button/AppButton.vue';
 
 export default {
   name: 'Cta',
   components: { AppButton },
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            ctaTitle
+            ctaDescription
+            ctaImage {
+              publicUrl
+            }
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
+    },
+  },
 };
 </script>
 
 <template>
-  <section class="cta">
+  <section v-if="!this.$apollo.queries.content.loading" class="cta">
     <div class="cta__container container">
       <div class="cta__content">
-        <h2 class="cta__content__title">Live the experience</h2>
+        <h2 class="cta__content__title">{{ content.ctaTitle }}</h2>
 
         <div class="cta__content__image cta__content__image--mobile">
           <img src="https://i.imgur.com/AqjbcUM.jpg" alt="alt text" />
         </div>
 
         <p class="cta__content__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi euismod consectetur consectetur,
+        {{ content.ctaDescription }}
         </p>
 
         <AppButton class="cta__content__button" type="primary" link="/contact"
@@ -27,7 +48,7 @@ export default {
       </div>
 
       <div class="cta__content__image cta__content__image--desktop">
-        <img src="https://i.imgur.com/AqjbcUM.jpg" alt="alt text" />
+        <img :src="content.ctaImage.publicUrl" :alt="title" />
       </div>
     </div>
   </section>

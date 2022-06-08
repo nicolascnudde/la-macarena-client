@@ -2,17 +2,14 @@
 export default {
   name: 'TeamListItem',
   props: {
+    key: {
+      type: String,
+    },
     image: {
       type: String,
-      default: 'asdf',
     },
     firstName: {
       type: String,
-      default: 'Eleven',
-    },
-    key: {
-      type: String,
-      default: '',
     },
   },
 };
@@ -23,10 +20,10 @@ export default {
     <figure class="team__list__item__figure">
       <img
         class="team__list__item__figure__img"
-        src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp"
+        :src="image"
       />
 
-      <figcaption class="team__list__item__figure__caption">Mayleen</figcaption>
+      <figcaption class="team__list__item__figure__caption">{{ firstName }}</figcaption>
     </figure>
   </li>
 </template>

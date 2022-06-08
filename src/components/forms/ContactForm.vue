@@ -67,7 +67,7 @@ export default {
         <h2 class="contact-form__content__title">Let's Talk</h2>
         <div class="contact-form__content__image">
           <img
-            src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp"
+            src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp"
           />
         </div>
       </div>

@@ -5,16 +5,6 @@ import TitleAndText from '../TitleAndText.vue';
 export default {
   name: 'Usps',
   components: { TitleAndText, UspsList },
-  props: {
-    title: {
-      type: String,
-      default: 'Title',
-    },
-    description: {
-      type: String,
-      default: 'Category',
-    },
-  },
 };
 </script>
 

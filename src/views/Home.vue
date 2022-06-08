@@ -1,5 +1,6 @@
 <script>
 import { useMeta } from 'vue-meta';
+import gql from 'graphql-tag';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
 import Hero from '@/components/hero/Hero.vue';
@@ -11,21 +12,46 @@ export default {
   name: 'Home',
   components: { BaseLayout, Cta, Hero, InfoBlock, TeamSection },
   setup() {
-    useMeta({ title: 'Hola!' });
+    useMeta({ title: '' });
+  },
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            homePageHeroTitle
+            homePageHeroDescription
+            homePageHeroImage {
+              publicUrl
+            }
+            homePageAboutTitle
+            homePageAboutDescription
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
+    },
   },
 };
 </script>
 
 <template>
-  <BaseLayout>
+  <BaseLayout v-if="!this.$apollo.queries.content.loading">
     <Hero
-      title="La Macarena"
-      description="Homepage hero description."
+      :title="content.homePageHeroTitle"
+      :description="content.homePageHeroDescription"
+      :image="content.homePageHeroImage.publicUrl"
       buttonText="Upcoming activities"
       buttonLink="/activities"
     />
 
-    <InfoBlock />
+    <InfoBlock
+      :title="content.homePageAboutTitle"
+      :description="content.homePageAboutDescription"
+    />
 
     <TeamSection />
 

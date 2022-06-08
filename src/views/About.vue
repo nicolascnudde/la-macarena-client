@@ -1,4 +1,5 @@
 <script>
+import gql from 'graphql-tag';
 import { useMeta } from 'vue-meta';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
@@ -14,14 +15,34 @@ export default {
   setup() {
     useMeta({ title: 'About' });
   },
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            aboutPageHeroTitle
+            aboutPageHeroDescription
+            aboutPageHeroImage {
+              publicUrl
+            }
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
+    },
+  },
 };
 </script>
 
 <template>
-  <BaseLayout>
+  <BaseLayout v-if="!this.$apollo.queries.content.loading">
     <Hero
-      title="About us"
-      description="This is a dummy description for the hero section on the about page. This will be replaced with a real description from the CMS."
+      :title="content.aboutPageHeroTitle"
+      :description="content.aboutPageHeroDescription"
+      :image="content.aboutPageHeroImage.publicUrl"
       noButton
     />
 

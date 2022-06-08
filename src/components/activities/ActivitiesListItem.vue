@@ -1,11 +1,13 @@
 <script>
 import AppButton from '../button/AppButton.vue';
-import gql from 'graphql-tag';
 
 export default {
   name: 'ActivitiesList',
   components: { AppButton },
   props: {
+    id: {
+      type: String,
+    },
     image: {
       type: String,
     },
@@ -25,9 +27,6 @@ export default {
       type: String,
     },
     toDate: {
-      type: String,
-    },
-    id: {
       type: String,
     },
   },
@@ -51,21 +50,33 @@ export default {
 
       <div class="upcoming-activities__list__item--top__container">
         <div class="upcoming-activities__list__item--top__box__container">
-          <span class="upcoming-activities__list__item--top__box">€ {{ price }}</span>
+          <span class="upcoming-activities__list__item--top__box"
+            >€ {{ price }}</span
+          >
 
-          <span v-if="!toDate" class="upcoming-activities__list__item--top__box">{{ parseDate(date) }}</span>
-          <span v-else class="upcoming-activities__list__item--top__box">{{ parseDate(date) }} – {{ parseDate(toDate) }}</span>
+          <span
+            v-if="!toDate"
+            class="upcoming-activities__list__item--top__box"
+            >{{ parseDate(date) }}</span
+          >
+          <span v-else class="upcoming-activities__list__item--top__box"
+            >{{ parseDate(date) }} – {{ parseDate(toDate) }}</span
+          >
         </div>
 
         <a href="#categories">
-          <span class="upcoming-activities__list__item--top__category">{{ categoryTitle }}</span>
+          <span class="upcoming-activities__list__item--top__category">{{
+            categoryTitle
+          }}</span>
         </a>
       </div>
     </div>
 
     <div class="upcoming-activities__list__item--bottom">
       <div class="upcoming-activities__list__item--bottom__image">
-        <img src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp" />
+        <img
+          src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp"
+        />
       </div>
 
       <p class="upcoming-activities__list__item--bottom__description">

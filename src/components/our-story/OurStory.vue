@@ -16,8 +16,6 @@ export default {
     },
     imageUrl: {
       type: String,
-      default:
-        'https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp',
     },
   },
 };

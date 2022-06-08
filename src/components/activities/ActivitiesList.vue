@@ -17,14 +17,13 @@ export default {
               publicUrl
             }
             price
-            numberOfSlots
+            slots
             category {
               id
               title
               description
             }
             date
-            fromDate
             toDate
           }
         }
@@ -35,8 +34,10 @@ export default {
 </script>
 
 <template>
-  <ul class="upcoming-activities__list" v-for="activity in activities" :key="activity.id">
-    <ActivitiesListItem 
+  <ul class="upcoming-activities__list">
+    <ActivitiesListItem
+      v-for="activity in activities"
+      :key="activity.id"
       :id="activity.id"
       :title="activity.title"
       :description="activity.description"

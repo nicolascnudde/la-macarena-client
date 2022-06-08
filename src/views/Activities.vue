@@ -1,4 +1,5 @@
 <script>
+import gql from 'graphql-tag';
 import { useMeta } from 'vue-meta';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
@@ -12,18 +13,33 @@ export default {
   setup() {
     useMeta({ title: 'Activities' });
   },
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            activitiesPageHeroTitle
+            activitiesPageHeroDescription
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
+    },
+  },
 };
 </script>
 
 <template>
-  <BaseLayout>
+  <BaseLayout v-if="!this.$apollo.queries.content.loading">
     <TitleAndText
       bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846484/bg-images/Brush_blue_bxzmpm.png"
       type="h1"
-      title="Activities"
+      :title="content.activitiesPageHeroTitle"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
+      {{ content.activitiesPageHeroDescription }}
     </TitleAndText>
 
     <ActivitiesSection />

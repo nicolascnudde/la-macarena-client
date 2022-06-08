@@ -2,31 +2,29 @@
 export default {
   name: 'CategoriesListItem',
   props: {
+    id: {
+      type: String,
+    },
     image: {
       type: String,
-      default: 'asdf',
+      default: 'https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp',
     },
     title: {
       type: String,
-      default: 'Category',
     },
     description: {
       type: String,
-      default:
-        'This is the description of a category. Placeholder text until the categories are loaded in from the cms.',
-    },
-    key: {
-      type: String,
-      default: '',
     },
   },
 };
 </script>
 
 <template>
-  <li class="categories__list__item" :key="key">
+  <li class="categories__list__item">
     <div class="categories__list__item__image">
-      <img src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653469604/categories/cl3ld3z9j00012062ah2abmp1.webp" />
+      <img
+        :src="image"
+      />
     </div>
 
     <h3 class="categories__list__item__title">{{ title }}</h3>

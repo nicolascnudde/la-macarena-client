@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      routeParam: this.$route.params.id,
+      routeParamId: this.$route.params.id,
     };
   },
   apollo: {
@@ -26,13 +26,14 @@ export default {
             title
             description
             price
-            numberOfSlots
+            slots
+            date
           }
         }
       `,
       variables() {
         return {
-          id: this.routeParam,
+          id: this.routeParamId,
         };
       },
     },
@@ -51,6 +52,14 @@ export default {
     >
       {{ activity.description }}
     </TitleAndText>
+
+    <section class="container">
+      <p>Slots: {{ activity.slots }}</p>
+
+      <p>Price: {{ activity.price }}</p>
+
+      <p>Date: {{ activity.date }}</p>
+    </section>
   </BaseLayout>
 </template>
 

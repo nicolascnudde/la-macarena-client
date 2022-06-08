@@ -1,4 +1,5 @@
 <script>
+import gql from 'graphql-tag';
 import { useMeta } from 'vue-meta';
 
 import BaseLayout from '../layouts/BaseLayout.vue';
@@ -10,23 +11,37 @@ export default {
   name: 'Contact',
   components: { BaseLayout, FaqSection, ContactForm, TitleAndText },
   setup() {
-    useMeta({ 
-        title: 'Contact',
-        description: `Don't be a stranger and say hello to us! We are always happy to hear from you.`,
-      });
+    useMeta({
+      title: 'Contact',
+      description: `Don't be a stranger and say hello to us! We are always happy to hear from you.`,
+    });
+  },
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            contactPageHeroTitle
+            contactPageHeroDescription
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
+    },
   },
 };
 </script>
 
 <template>
-  <BaseLayout>
+  <BaseLayout v-if="!this.$apollo.queries.content.loading">
     <TitleAndText
       bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846499/bg-images/Yellow_Paint_byfsl6.png"
       type="h1"
-      title="Contact"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
+      :title="content.contactPageHeroTitle"
+    >{{ content.contactPageHeroDescription }}
     </TitleAndText>
 
     <ContactForm />

@@ -1,19 +1,37 @@
 <script>
+import gql from 'graphql-tag';
+
 import FacebookIcon from '@/assets/icons/facebook.svg?component';
 import InstagramIcon from '@/assets/icons/instagram.svg?component';
 
 export default {
   name: 'Socials',
   components: { FacebookIcon, InstagramIcon },
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            socialMediaInstagram
+            socialMediaFacebook
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="socials">
+  <div v-if="!this.$apollo.queries.content.loading" class="socials">
     <ul class="socials__list">
       <li class="socials__list__item">
         <a
-          href="https://www.instagram.com/la-macarena-be"
+          :href="content.socialMediaInstagram"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -23,7 +41,7 @@ export default {
 
       <li class="socials__list__item">
         <a
-          href="https://www.facebook.com/la-macarena-be"
+          :href="content.socialMediaFacebook"
           target="_blank"
           rel="noopener noreferrer"
         >

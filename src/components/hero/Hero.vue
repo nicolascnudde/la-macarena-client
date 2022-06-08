@@ -11,7 +11,6 @@ export default {
     },
     description: {
       type: String,
-      default: 'Hero description',
     },
     image: {
       type: String,
@@ -51,7 +50,7 @@ export default {
     </div>
 
     <div class="hero__image">
-      <img src="https://i.imgur.com/AqjbcUM.jpg" alt="alt text" />
+      <img :src="image" :alt="title" />
     </div>
   </section>
 </template>
