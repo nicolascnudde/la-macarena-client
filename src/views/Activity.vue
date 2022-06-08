@@ -6,10 +6,11 @@ import BaseLayout from '@/layouts/BaseLayout.vue';
 import TitleAndText from '@/components/TitleAndText.vue';
 import Cta from '../components/cta/Cta.vue';
 import Hero from '../components/hero/Hero.vue';
+import ActivityForm from '../components/forms/ActivityForm.vue';
 
 export default {
   name: 'Activity',
-  components: { BaseLayout, Cta, TitleAndText, Hero },
+  components: { ActivityForm, BaseLayout, Cta, TitleAndText, Hero, ActivityForm },
   setup() {
     useMeta({ title: 'Activity' });
   },
@@ -65,6 +66,12 @@ export default {
         <p>Date: {{ activity.date }}</p>
       </div>
     </section>
+
+    <ActivityForm
+      :activityTitle="activity.title"
+      :activityPrice="activity.price"
+      :activityDate="activity.date"
+    />
 
     <Cta />
   </BaseLayout>
