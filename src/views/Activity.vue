@@ -10,7 +10,14 @@ import ActivityForm from '../components/forms/ActivityForm.vue';
 
 export default {
   name: 'Activity',
-  components: { ActivityForm, BaseLayout, Cta, TitleAndText, Hero, ActivityForm },
+  components: {
+    ActivityForm,
+    BaseLayout,
+    Cta,
+    TitleAndText,
+    Hero,
+    ActivityForm,
+  },
   setup() {
     useMeta({ title: 'Activity' });
   },
@@ -54,7 +61,8 @@ export default {
       :image="activity.image.publicUrl"
       :title="activity.title"
       :description="activity.description"
-      noButton
+      buttonLink="/activities"
+      buttonText="Back to activities"
     />
 
     <section class="activity-details">
@@ -77,4 +85,16 @@ export default {
   </BaseLayout>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.hero__content__button {
+  .btn__text {
+    &::before {
+      content: '« ';
+    }
+  }
+
+  .icon--arrow-right {
+    display: none;
+  }
+}
+</style>
