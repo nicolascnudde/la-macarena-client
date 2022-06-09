@@ -1,13 +1,12 @@
 <script>
 import { useMeta } from 'vue-meta';
 
-import BaseLayout from '../layouts/BaseLayout.vue';
-import Illustration404 from '@/assets/icons/404.svg?component';
-import AppButton from '../components/button/AppButton.vue';
+import BaseLayout from '@/layouts/BaseLayout.vue';
+import AppButton from '@/components/button/AppButton.vue';
 
 export default {
   name: '404',
-  components: { AppButton, BaseLayout, Illustration404 },
+  components: { AppButton, BaseLayout },
   setup() {
     useMeta({ title: '404 - Page not found' });
   },
@@ -29,7 +28,7 @@ export default {
       <div class="page-not-found__image">
         <img
           src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1654813030/404/404_akmnof.png"
-          alt="page not found"
+          alt="cat knocking over water"
         />
       </div>
     </div>
