@@ -2,6 +2,7 @@
 import { ErrorMessage, Field, Form as VeeForm } from 'vee-validate';
 import * as Yup from 'yup';
 import emailjs from '@emailjs/browser';
+import gql from 'graphql-tag';
 
 import AppButton from '../button/AppButton.vue';
 
@@ -32,10 +33,20 @@ export default {
   data() {
     // Using Yup to validate the form
     const validationSchema = Yup.object().shape({
-      firstName: Yup.string().required('first name is required').min(2, 'first name is too short'),
-      lastName: Yup.string().required('last name is required').min(2, 'last name is too short'),
-      email: Yup.string().required('email is required').email('email is invalid'),
-      phone: Yup.string().required('phone number is required').matches(new RegExp('[0-9]'), 'phone number must only contain numbers').min(8, 'phone number is too short').max(12, 'phone number is too long'),
+      firstName: Yup.string()
+        .required('first name is required')
+        .min(2, 'first name is too short'),
+      lastName: Yup.string()
+        .required('last name is required')
+        .min(2, 'last name is too short'),
+      email: Yup.string()
+        .required('email is required')
+        .email('email is invalid'),
+      phone: Yup.string()
+        .required('phone number is required')
+        .matches(new RegExp('[0-9]'), 'phone number must only contain numbers')
+        .min(8, 'phone number is too short')
+        .max(12, 'phone number is too long'),
       actTitle: Yup.string(),
       actPrice: Yup.number(),
       actDate: Yup.string(),
@@ -56,17 +67,53 @@ export default {
 
       return `${day}/${month}/${year}`;
     },
-    onSubmit() {
+    // Mutate the form input values to the Reservation table in the database
+    createReservation(values) {
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation createReservation($input: ReservationCreateInput!) {
+            createReservation(data: $input) {
+              firstName
+              lastName
+              email
+              phone
+              activityTitle
+              activityPrice
+              activityDate
+              message
+              createdAt
+            }
+          }
+        `,
+        variables: {
+          input: {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            phone: values.phone,
+            activityTitle: values.activityTitle,
+            activityPrice: values.activityPrice,
+            activityDate: values.activityDate,
+            message: values.message,
+            createdAt: new Date(),
+          },
+        },
+      });
+    },
+    onSubmit(values) {
+      // Call the createReservation function to mutate the values to the database
+      this.createReservation(values);
+
+      // Send the email with the emailjs API keys
       try {
-        // Send the email with the emailjs API keys
         emailjs.sendForm(
           serviceId,
           templateId,
           this.$refs.activity_form,
           publicKey
         );
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        throw new Error(error);
       }
 
       // Reset the contact form
@@ -102,7 +149,9 @@ export default {
         ref="activity_form"
         @submit="handleSubmit($event, onSubmit)"
       >
-        <div class="activity-form__form__field activity-form__form__field--first-name">
+        <div
+          class="activity-form__form__field activity-form__form__field--first-name"
+        >
           <label for="firstName">First name</label>
 
           <Field
@@ -118,7 +167,9 @@ export default {
           />
         </div>
 
-        <div class="activity-form__form__field activity-form__form__field--last-name">
+        <div
+          class="activity-form__form__field activity-form__form__field--last-name"
+        >
           <label for="lastName">Last name</label>
 
           <Field
@@ -134,7 +185,9 @@ export default {
           />
         </div>
 
-        <div class="activity-form__form__field activity-form__form__field--email">
+        <div
+          class="activity-form__form__field activity-form__form__field--email"
+        >
           <label for="email">Email</label>
 
           <Field
@@ -150,7 +203,9 @@ export default {
           />
         </div>
 
-        <div class="activity-form__form__field activity-form__form__field--phone">
+        <div
+          class="activity-form__form__field activity-form__form__field--phone"
+        >
           <label for="phone">Phone number</label>
 
           <Field
@@ -169,7 +224,7 @@ export default {
         <div
           class="activity-form__form__field activity-form__form__field--activity-title"
         >
-          <label for="activityTitle">Activity</label>
+          <label>Activity</label>
 
           <Field
             id="activityTitle"
@@ -188,7 +243,7 @@ export default {
         <div
           class="activity-form__form__field activity-form__form__field--activity-price"
         >
-          <label for="activityPrice">Price</label>
+          <label>Price</label>
 
           <Field
             id="activityPrice"
@@ -207,7 +262,7 @@ export default {
         <div
           class="activity-form__form__field activity-form__form__field--activity-date"
         >
-          <label for="activityDate">Date</label>
+          <label>Date</label>
 
           <Field
             id="activityDate"
@@ -314,6 +369,14 @@ export default {
           &::after {
             content: '*';
           }
+        }
+      }
+
+      &--activity-title,
+      &--activity-price,
+      &--activity-date {
+        input {
+          cursor: default;
         }
       }
 

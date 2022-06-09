@@ -1,44 +1,71 @@
 <script>
+import gql from 'graphql-tag';
+
 import TitleAndText from '../TitleAndText.vue';
 
 export default {
   name: 'Our Story',
   components: { TitleAndText },
-  props: {
-    title: {
-      type: String,
-      default: 'Our Story',
-    },
-    description: {
-      type: String,
-      default:
-        'This is the description of the our story section. Placeholder text until the description is loaded in from the cms.',
-    },
-    imageUrl: {
-      type: String,
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            aboutPageStoryTitle
+            aboutPageStoryDescription
+            aboutPageStoryImageOne {
+              publicUrl
+            }
+            aboutPageStoryImageTwo {
+              publicUrl
+            }
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
     },
   },
+  // props: {
+  //   title: {
+  //     type: String,
+  //     default: 'Our Story',
+  //   },
+  //   description: {
+  //     type: String,
+  //     default:
+  //       'This is the description of the our story section. Placeholder text until the description is loaded in from the cms.',
+  //   },
+  //   imageOneUrl: {
+  //     type: String,
+  //   },
+  //   imageTwoUrl: {
+  //     type: String,
+  //   },
+  // },
 };
 </script>
 
 <template>
-  <section class="our-story">
+  <section v-if="!this.$apollo.queries.content.loading" class="our-story">
     <div class="our-story__container container">
       <div class="our-story__background"></div>
 
       <div class="our-story__image">
-        <img :src="imageUrl" />
+        <img :src="content.aboutPageStoryImageOne.publicUrl" />
 
-        <img :src="imageUrl" />
+        <img :src="content.aboutPageStoryImageTwo.publicUrl" />
       </div>
 
       <div class="our-story__content">
         <TitleAndText
           type="h2"
-          :title="title"
+          :title="content.aboutPageStoryTitle"
           bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846485/bg-images/Brush_Pink_dsvgal.png"
         >
-          {{ description }}
+          {{ content.aboutPageStoryDescription }}
         </TitleAndText>
       </div>
     </div>
@@ -90,18 +117,20 @@ export default {
 
       img {
         width: 15rem;
+        height: 10rem;
+        object-fit: cover;
         position: absolute;
 
         &:first-child {
           top: 3rem;
           right: 6rem;
-          border-radius: 20px 40px 30px 10px;
+          border-radius: 90px 40px 70px 50px;
         }
 
         &:last-child {
           bottom: 3rem;
-          right: 12rem;
-          border-radius: 30px 20px 40px 10px;
+          right: 14rem;
+          border-radius: 30px 60px 40px 90px;
         }
       }
     }

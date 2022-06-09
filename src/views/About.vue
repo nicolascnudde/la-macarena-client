@@ -51,7 +51,7 @@ export default {
 
     <Usps />
 
-    <TeamSection />
+    <TeamSection imageRight />
 
     <Cta />
   </BaseLayout>

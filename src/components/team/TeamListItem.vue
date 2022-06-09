@@ -50,13 +50,14 @@ export default {
     }
 
     &__caption {
+      color: $clrPrimary;
+      font-family: 'Comforter Brush', cursive;
+      font-size: $fontSize40;
       position: absolute;
       bottom: 0.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Comforter Brush', cursive;
-      color: $clrPrimary;
-      font-size: $fontSize40;
+      left: 0;
+      text-align: center;
+      width: 100%;
     }
   }
 

@@ -7,6 +7,12 @@ import TitleAndText from '../TitleAndText.vue';
 export default {
   name: 'Team',
   components: { TeamList, TitleAndText },
+  props: {
+    imageRight: {
+      type: Boolean,
+      default: false,
+    },
+  },
   apollo: {
     content: {
       query: gql`
@@ -15,6 +21,9 @@ export default {
             id
             whoWeAreTitle
             whoWeAreDescription
+            whoWeAreImage {
+              publicUrl
+            }
           }
         }
       `,
@@ -31,7 +40,7 @@ export default {
     <div class="team__container container">
       <div :class="`team__image ${imageRight ? 'team__image--right' : ''}`">
         <img
-          src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp"
+          :src="content.whoWeAreImage.publicUrl"
         />
       </div>
 
@@ -73,7 +82,7 @@ export default {
 
       img {
         margin-left: -2rem; // Mitigate the margin from the wrapper's padding of 2rem
-        border-radius: 0 75px 150px 0;
+        border-radius: 0 150px 250px 0;
         position: absolute;
         top: 50%;
         width: 45%;
@@ -90,7 +99,7 @@ export default {
 
         img {
           margin-left: 2rem; // Mitigate the margin from the wrapper's padding of 2rem
-          border-radius: 75px 0 0 150px;
+          border-radius: 150px 0 0 350px;
           left: unset;
           right: 0;
         }

@@ -2,6 +2,7 @@
 import { ErrorMessage, Field, Form as VeeForm } from 'vee-validate';
 import * as Yup from 'yup';
 import emailjs from '@emailjs/browser';
+import gql from 'graphql-tag';
 
 import AppButton from '../button/AppButton.vue';
 
@@ -17,6 +18,23 @@ export default {
     ErrorMessage,
     Field,
     VeeForm,
+  },
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            contactPageFormImage {
+              publicUrl
+            }
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
+    },
   },
   data() {
     // Using Yup to validate the form
@@ -63,11 +81,11 @@ export default {
       as="div"
       class="contact-form__container container"
     >
-      <div class="contact-form__content">
+      <div v-if="!this.$apollo.queries.content.loading" class="contact-form__content">
         <h2 class="contact-form__content__title">Let's Talk</h2>
         <div class="contact-form__content__image">
           <img
-            src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp"
+            :src="content.contactPageFormImage.publicUrl"
           />
         </div>
       </div>

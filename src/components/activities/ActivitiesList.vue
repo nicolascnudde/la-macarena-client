@@ -38,15 +38,16 @@ export default {
     <ActivitiesListItem
       v-for="activity in activities"
       :key="activity.id"
-      :id="activity.id"
-      :title="activity.title"
+      :categoryTitle="activity.category.title"
+      :date="activity.date"
       :description="activity.description"
+      :fromDate="activity.fromDate"
+      :id="activity.id"
+      :image="activity.image.publicUrl"
       :price="activity.price"
       :slots="activity.numberOfSlots"
-      :date="activity.date"
-      :fromDate="activity.fromDate"
+      :title="activity.title"
       :toDate="activity.toDate"
-      :categoryTitle="activity.category.title"
     />
   </ul>
 </template>

@@ -75,7 +75,7 @@ export default {
     <div class="upcoming-activities__list__item--bottom">
       <div class="upcoming-activities__list__item--bottom__image">
         <img
-          src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp"
+          :src="image"
         />
       </div>
 
@@ -124,11 +124,16 @@ export default {
     &__box {
       background: $clrPrimary;
       color: #fff;
+      font-size: $fontSize12;
       padding: 0.5rem;
+
+      @include responsive(desktop) {
+        font-size: $fontSize16;
+      }
 
       &__container {
         display: flex;
-        gap: 1rem;
+        gap: 0.75rem;
       }
     }
 
