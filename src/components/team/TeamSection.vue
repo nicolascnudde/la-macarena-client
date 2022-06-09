@@ -36,7 +36,7 @@ export default {
 </script>
 
 <template>
-  <section v-if="!this.$apollo.loading" class="team">
+  <section v-if="!this.$apollo.queries.content.loading" class="team">
     <div class="team__container container">
       <div :class="`team__image ${imageRight ? 'team__image--right' : ''}`">
         <img

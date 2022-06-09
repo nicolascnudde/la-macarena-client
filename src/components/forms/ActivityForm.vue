@@ -130,7 +130,7 @@ export default {
 </script>
 
 <template>
-  <section v-if="!this.$apollo.loading" class="activity-form">
+  <section class="activity-form">
     <VeeForm
       v-slot="{ handleSubmit }"
       :validation-schema="validationSchema"
