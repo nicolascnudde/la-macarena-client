@@ -4,6 +4,11 @@ import { TheFooter, TheHeader } from '../components/layout';
 export default {
   name: 'BaseLayout',
   components: { TheFooter, TheHeader },
+  props: {
+    pageClass: {
+      type: String,
+    },
+  }
 };
 </script>
 
@@ -11,7 +16,7 @@ export default {
   <div class="app__wrapper">
     <TheHeader />
 
-    <main class="app__main">
+    <main :class="`app__main ${pageClass}`">
       <slot></slot>
     </main>
 

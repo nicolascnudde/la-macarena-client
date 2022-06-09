@@ -3,20 +3,19 @@ import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
 import BaseLayout from '@/layouts/BaseLayout.vue';
-import TitleAndText from '@/components/TitleAndText.vue';
-import Cta from '../components/cta/Cta.vue';
-import Hero from '../components/hero/Hero.vue';
-import ActivityForm from '../components/forms/ActivityForm.vue';
+import ActivityForm from '@/components/forms/ActivityForm.vue';
+import ActivitySection from '@/components/activity/ActivitySection.vue';
+import Cta from '@/components/cta/Cta.vue';
+import Hero from '@/components/hero/Hero.vue';
 
 export default {
   name: 'Activity',
   components: {
     ActivityForm,
+    ActivitySection,
     BaseLayout,
     Cta,
-    TitleAndText,
     Hero,
-    ActivityForm,
   },
   setup() {
     useMeta({ title: 'Activity' });
@@ -41,6 +40,9 @@ export default {
             slots
             date
             toDate
+            wysiwyg {
+              document
+            }
           }
         }
       `,
@@ -55,9 +57,7 @@ export default {
 </script>
 
 <template>
-  <div v-if="this.$apollo.queries.activity.loading">Loading...</div>
-
-  <BaseLayout v-else>
+  <BaseLayout v-if="!this.$apollo.queries.activity.loading" pageClass="activity-page">
     <Hero
       :image="activity.image.publicUrl"
       :title="activity.title"
@@ -66,15 +66,12 @@ export default {
       buttonText="Back to activities"
     />
 
-    <section class="activity-details">
-      <div class="container">
-        <p>Slots: {{ activity.slots }}</p>
-
-        <p>Price: {{ activity.price }}</p>
-
-        <p>Date: {{ activity.date }}</p>
-      </div>
-    </section>
+    <ActivitySection
+      :slots="activity.slots"
+      :price="activity.price"
+      :date="activity.date"
+      :toDate="activity.toDate"
+    />
 
     <ActivityForm
       :activityTitle="activity.title"
@@ -82,21 +79,39 @@ export default {
       :activityDate="activity.date"
       :activityToDate="activity.toDate"
     />
-
-    <Cta />
   </BaseLayout>
 </template>
 
 <style lang="scss">
-.hero__content__button {
-  .btn__text {
-    &::before {
-      content: '« ';
-    }
-  }
+.activity-page {
+  .hero {
+    margin-bottom: 3rem;
 
-  .icon--arrow-right {
-    display: none;
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      &__title {
+        line-height: 1.2;
+      }
+
+      &__button {
+        order: -1;
+        margin-bottom: 2rem;
+
+        .btn__text {
+          font-size: $fontSize16;
+
+          &::before {
+            content: '« ';
+          }
+        }
+        .icon--arrow-right {
+          display: none;
+        }
+      }
+    }
   }
 }
 </style>
