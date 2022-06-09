@@ -29,6 +29,9 @@ export default {
     activityDate: {
       type: String,
     },
+    activityToDate: {
+      type: String,
+    },
   },
   data() {
     // Using Yup to validate the form
@@ -50,7 +53,7 @@ export default {
       actTitle: Yup.string(),
       actPrice: Yup.number(),
       actDate: Yup.string(),
-      message: Yup.string(),
+      message: Yup.string().min(2, 'message is too short'),
     });
 
     return {
@@ -113,7 +116,7 @@ export default {
           publicKey
         );
       } catch (error) {
-        throw new Error(error);
+        console.log(error);
       }
 
       // Reset the contact form
@@ -268,7 +271,7 @@ export default {
             id="activityDate"
             name="activityDate"
             type="text"
-            :value="parseDate(activityDate)"
+            :value="`${parseDate(activityDate)} ${activityToDate ? ' – ' + parseDate(activityToDate) : ''}`"
             readonly
           />
 

@@ -40,6 +40,7 @@ export default {
             price
             slots
             date
+            toDate
           }
         }
       `,
@@ -79,6 +80,7 @@ export default {
       :activityTitle="activity.title"
       :activityPrice="activity.price"
       :activityDate="activity.date"
+      :activityToDate="activity.toDate"
     />
 
     <Cta />
