@@ -2,11 +2,11 @@
 import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
-import BaseLayout from '@/layouts/BaseLayout.vue';
-import Hero from '@/components/hero/Hero.vue';
-import InfoBlock from '../components/InfoBlock.vue';
-import Cta from '../components/cta/Cta.vue';
-import TeamSection from '@/components/team/TeamSection.vue';
+import { BaseLayout } from '@/layouts';
+import { Hero } from '@/components/hero';
+import { InfoBlock } from '@/components';
+import { Cta } from '@/components/cta';
+import { TeamSection } from '@/components/team';
 import { placeholderImage } from '@/constants';
 
 export default {

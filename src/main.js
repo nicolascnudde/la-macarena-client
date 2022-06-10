@@ -25,7 +25,7 @@ const app = createApp({
   render: () => h(App),
 });
 
-// Use Apollo and the router
+// Use Apollo, the router and the meta manager
 app.use(apolloProvider);
 app.use(router);
 app.use(createMetaManager());

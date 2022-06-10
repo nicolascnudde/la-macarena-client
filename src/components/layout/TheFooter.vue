@@ -1,8 +1,8 @@
 <script>
-import Socials from '@/components/Socials.vue';
-import SeparatorTop from '@/assets/icons/separator-top.svg?component';
-import SeparatorBottom from '@/assets/icons/separator-bottom.svg?component';
+import { Socials } from '@/components/socials';
 import Heart from '@/assets/icons/heart.svg?component';
+import SeparatorBottom from '@/assets/icons/separator-bottom.svg?component';
+import SeparatorTop from '@/assets/icons/separator-top.svg?component';
 
 export default {
   name: 'TheFooter',

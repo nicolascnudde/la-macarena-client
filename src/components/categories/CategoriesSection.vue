@@ -3,7 +3,7 @@ import CategoriesList from './CategoriesList.vue';
 import TitleAndText from '../TitleAndText.vue';
 
 export default {
-  name: 'Categories',
+  name: 'CategoriesSection',
   components: { CategoriesList, TitleAndText },
   props: {
     title: {

@@ -1,6 +1,6 @@
 <script>
-import TheNavigation from './TheNavigation.vue';
-import Socials from '../Socials.vue';
+import TheNavigation from '@/components/layout/TheNavigation.vue';
+import { Socials } from '@/components/socials';
 
 export default {
   name: 'TheHeader',
