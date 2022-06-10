@@ -35,7 +35,7 @@ export default {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <InstagramIcon />
+          <InstagramIcon /><span>Instagram</span>
         </a>
       </li>
 
@@ -45,7 +45,7 @@ export default {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FacebookIcon />
+          <FacebookIcon /><span>Facebook</span>
         </a>
       </li>
     </ul>
@@ -63,6 +63,14 @@ export default {
     &__item {
       @include responsive(desktop) {
         transition: transform $transitionFast;
+
+        // Render the text for SEO reasons but hide it from the user so we only see the SVG
+        span {
+          opacity: 0;
+          position: absolute;
+          right: 0;
+          transform: translateX(100%);
+        }
 
         &:hover {
           transform: scale(1.2);

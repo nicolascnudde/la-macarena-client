@@ -34,7 +34,7 @@ export default {
       </div>
 
       <div v-if="bgImageUrl !== ''" class="title-text__image">
-        <img :src="bgImageUrl" />
+        <img :src="bgImageUrl" :alt="title" />
       </div>
     </div>
   </section>
