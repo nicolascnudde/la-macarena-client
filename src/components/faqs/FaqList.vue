@@ -13,6 +13,7 @@ export default {
             id
             question
             answer
+            isExpanded
           }
         }
       `,
@@ -22,16 +23,13 @@ export default {
 </script>
 
 <template>
-  <div v-if="$apollo.queries.faqs.loading" style="font-size: 80px">
-    Loading...
-  </div>
-
-  <ul class="faq__list">
+  <ul v-if="!this.$apollo.queries.faqs.loading" class="faq__list">
     <FaqListItem
       v-for="faq in faqs"
       :key="faq.id"
       :question="faq.question"
       :answer="faq.answer"
+      :isExpanded="faq.isExpanded"
     />
   </ul>
 </template>
