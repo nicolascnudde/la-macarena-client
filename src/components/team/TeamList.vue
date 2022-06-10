@@ -1,8 +1,8 @@
 <script>
 import gql from 'graphql-tag';
 
-import TeamListItem from './TeamListItem.vue';
 import { placeholderImage } from '@/constants';
+import TeamListItem from './TeamListItem.vue';
 
 export default {
   name: 'TeamList',
@@ -12,7 +12,7 @@ export default {
     members: {
       query: gql`
         query members {
-          members {
+          members(orderBy: { id: asc }) {
             id
             firstName
             lastName
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <template>
-  <ul class="team__list">
+  <ul v-if="!this.$apollo.queries.members.loading" class="team__list">
     <TeamListItem
       v-for="member in members"
       :key="member.id"
@@ -40,8 +40,7 @@ export default {
 
 <style lang="scss">
 .team__list {
-  background: url('https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846498/bg-images/Brush_Pink_1_q1htng.png')
-    center/200% no-repeat;
+  background: url('https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846498/bg-images/Brush_Pink_1_q1htng.png') center/200% no-repeat;
   position: relative;
   display: grid;
   grid-template-columns: repeat(1, 1fr);

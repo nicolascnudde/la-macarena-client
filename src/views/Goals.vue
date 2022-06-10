@@ -1,11 +1,11 @@
 <script>
-import gql from 'graphql-tag';
 import { useMeta } from 'vue-meta';
+import gql from 'graphql-tag';
 
-import BaseLayout from '@/layouts/BaseLayout.vue';
-import GoalsSection from '@/components/goals/GoalsSection.vue';
-import TitleAndText from '@/components/TitleAndText.vue';
-import Cta from '../components/cta/Cta.vue';
+import { BaseLayout } from '@/layouts';
+import { Cta } from '@/components/cta';
+import { GoalsSection } from '@/components/goals';
+import { TitleAndText } from '@/components';
 
 export default {
   name: 'Goals',
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-  <BaseLayout v-if="!this.$apollo.queries.content.loading">
+  <BaseLayout v-if="!this.$apollo.queries.content.loading" pageClass="goals-page">
     <TitleAndText
       bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846484/bg-images/Brush_Green_yuvrrs.png"
       type="h1"
@@ -51,5 +51,3 @@ export default {
     <Cta />
   </BaseLayout>
 </template>
-
-<style lang="scss"></style>

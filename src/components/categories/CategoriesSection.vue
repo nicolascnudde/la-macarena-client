@@ -1,32 +1,40 @@
 <script>
+import gql from 'graphql-tag';
+
+import { TitleAndText } from '@/components';
 import CategoriesList from './CategoriesList.vue';
-import TitleAndText from '../TitleAndText.vue';
 
 export default {
   name: 'CategoriesSection',
   components: { CategoriesList, TitleAndText },
-  props: {
-    title: {
-      type: String,
-      default: 'Title',
-    },
-    description: {
-      type: String,
-      default: 'Category',
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            activitiesPageCategoriesTitle
+            activitiesPageCategoriesDescription
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
     },
   },
 };
 </script>
 
 <template>
-  <section class="categories" id="categories">
+  <section v-if="!this.$apollo.queries.content.loading" class="categories" id="categories">
     <div class="container">
       <TitleAndText
         bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846485/bg-images/Brush_Light_Blue_eywnk7.png"
         type="h2"
-        title="Categories"
+        :title="content.activitiesPageCategoriesTitle"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        {{ content.activitiesPageCategoriesDescription }}
       </TitleAndText>
 
       <CategoriesList />

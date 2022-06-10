@@ -1,8 +1,8 @@
 <script>
 import gql from 'graphql-tag';
 
-import GoalsListItem from './GoalsListItem.vue';
 import { placeholderImage } from '@/constants';
+import GoalsListItem from './GoalsListItem.vue';
 
 export default {
   name: 'GoalsList',
@@ -12,7 +12,7 @@ export default {
     goals: {
       query: gql`
         query goals {
-          goals {
+          goals(orderBy: { id: asc }) {
             id
             title
             description

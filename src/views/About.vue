@@ -1,19 +1,27 @@
 <script>
-import gql from 'graphql-tag';
 import { useMeta } from 'vue-meta';
+import gql from 'graphql-tag';
 
-import BaseLayout from '@/layouts/BaseLayout.vue';
-import Hero from '@/components/hero/Hero.vue';
-import TeamSection from '@/components/team/TeamSection.vue';
-import TitleAndText from '@/components/TitleAndText.vue';
-import Usps from '@/components/usps/Usps.vue';
-import OurStory from '@/components/our-story/OurStory.vue';
-import Cta from '@/components/cta/Cta.vue';
 import { placeholderImage } from '@/constants';
+import { BaseLayout } from '@/layouts';
+import { Cta } from '@/components/cta';
+import { Hero } from '@/components/hero';
+import { OurStory } from '@/components/our-story';
+import { TeamSection } from '@/components/team';
+import { TitleAndText } from '@/components';
+import { UspsSection } from '@/components/usps';
 
 export default {
   name: 'About',
-  components: { BaseLayout, Cta, Hero, OurStory, TeamSection, TitleAndText, Usps },
+  components: {
+    BaseLayout,
+    Cta,
+    Hero,
+    OurStory,
+    TeamSection,
+    TitleAndText,
+    UspsSection,
+  },
   data: { placeholderImage },
   setup() {
     useMeta({ title: 'About' });
@@ -41,17 +49,21 @@ export default {
 </script>
 
 <template>
-  <BaseLayout v-if="!this.$apollo.queries.content.loading">
+  <BaseLayout v-if="!this.$apollo.queries.content.loading" pageClass="about-page">
     <Hero
       :title="content.aboutPageHeroTitle"
       :description="content.aboutPageHeroDescription"
-      :image="content.aboutPageHeroImage ? content.aboutPageHeroImage.publicUrl : placeholderImage"
+      :image="
+        content.aboutPageHeroImage
+          ? content.aboutPageHeroImage.publicUrl
+          : placeholderImage
+      "
       noButton
     />
 
     <OurStory />
 
-    <Usps />
+    <UspsSection />
 
     <TeamSection imageRight />
 

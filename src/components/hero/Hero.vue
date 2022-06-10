@@ -7,7 +7,6 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Hero title',
     },
     description: {
       type: String,
@@ -45,8 +44,9 @@ export default {
         class="hero__content__button"
         type="secondary"
         :link="buttonLink"
-        >{{ buttonText }}</AppButton
-      >
+        >
+          {{ buttonText }}
+        </AppButton>
     </div>
 
     <div class="hero__image">

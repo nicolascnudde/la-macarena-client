@@ -1,8 +1,8 @@
 <script>
 import gql from 'graphql-tag';
 
-import CategoriesListItem from './CategoriesListItem.vue';
 import { placeholderImage } from '@/constants';
+import CategoriesListItem from './CategoriesListItem.vue';
 
 export default {
   name: 'CategoriesList',
@@ -12,7 +12,7 @@ export default {
     categories: {
       query: gql`
         query categories {
-          categories {
+          categories(orderBy: { id: asc }) {
             id
             title
             description
@@ -35,11 +35,7 @@ export default {
       :id="category.id"
       :title="category.title"
       :description="category.description"
-      :image="
-        category.image
-          ? category.image.publicUrl
-          : placeholderImage
-      "
+      :image="category.image ? category.image.publicUrl : placeholderImage"
     />
   </ul>
 </template>

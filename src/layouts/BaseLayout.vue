@@ -1,5 +1,5 @@
 <script>
-import { TheFooter, TheHeader } from '../components/layout';
+import { TheFooter, TheHeader } from '@/components/layout';
 
 export default {
   name: 'BaseLayout',
@@ -8,7 +8,7 @@ export default {
     pageClass: {
       type: String,
     },
-  }
+  },
 };
 </script>
 

@@ -2,11 +2,11 @@
 import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
-import BaseLayout from '@/layouts/BaseLayout.vue';
-import ActivityForm from '@/components/forms/ActivityForm.vue';
-import ActivitySection from '@/components/activity/ActivitySection.vue';
-import Cta from '@/components/cta/Cta.vue';
-import Hero from '@/components/hero/Hero.vue';
+import { ActivityForm } from '@/components/forms';
+import { ActivitySection } from '@/components/activity';
+import { BaseLayout } from '@/layouts';
+import { Cta } from '@/components/cta';
+import { Hero } from '@/components/hero';
 import { placeholderImage } from '@/constants';
 
 export default {
@@ -18,14 +18,14 @@ export default {
     Cta,
     Hero,
   },
-  setup() {
-    useMeta({ title: 'Activity' });
-  },
   data() {
     return {
       placeholderImage,
       routeParamId: this.$route.params.id,
     };
+  },
+  setup() {
+    useMeta({ title: 'Activity' });
   },
   apollo: {
     activity: {
@@ -61,9 +61,9 @@ export default {
 <template>
   <BaseLayout v-if="!this.$apollo.queries.activity.loading" pageClass="activity-page">
     <Hero
+      :description="activity.description"
       :image="activity.image ? activity.image.publicUrl : placeholderImage"
       :title="activity.title"
-      :description="activity.description"
       buttonLink="/activities"
       buttonText="Back to activities"
     />
@@ -80,6 +80,7 @@ export default {
       :activityPrice="activity.price"
       :activityDate="activity.date"
       :activityToDate="activity.toDate"
+      :activitySlots="activity.slots"
     />
   </BaseLayout>
 </template>

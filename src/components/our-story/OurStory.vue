@@ -1,8 +1,8 @@
 <script>
 import gql from 'graphql-tag';
 
-import TitleAndText from '../TitleAndText.vue';
 import { placeholderImage } from '@/constants';
+import { TitleAndText } from '@/components';
 
 export default {
   name: 'Our Story',
@@ -39,16 +39,16 @@ export default {
       <div class="our-story__background"></div>
 
       <div class="our-story__image">
-        <img :src="content.aboutPageStoryImageOne ? content.aboutPageStoryImageOne.publicUrl : placeholderImage" />
+        <img :src="content.aboutPageStoryImageOne ? content.aboutPageStoryImageOne.publicUrl : placeholderImage"/>
 
-        <img :src="content.aboutPageStoryImageTwo ? content.aboutPageStoryImageTwo.publicUrl : placeholderImage" />
+        <img :src="content.aboutPageStoryImageTwo ? content.aboutPageStoryImageTwo.publicUrl : placeholderImage"/>
       </div>
 
       <div class="our-story__content">
         <TitleAndText
+          bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846485/bg-images/Brush_Pink_dsvgal.png"
           type="h2"
           :title="content.aboutPageStoryTitle"
-          bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846485/bg-images/Brush_Pink_dsvgal.png"
         >
           {{ content.aboutPageStoryDescription }}
         </TitleAndText>

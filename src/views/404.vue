@@ -1,8 +1,8 @@
 <script>
 import { useMeta } from 'vue-meta';
 
-import BaseLayout from '@/layouts/BaseLayout.vue';
-import AppButton from '@/components/button/AppButton.vue';
+import { AppButton } from '@/components/button';
+import { BaseLayout } from '@/layouts';
 
 export default {
   name: '404',
@@ -18,10 +18,7 @@ export default {
     <div class="container">
       <h1 class="page-not-found__title">Page not found</h1>
 
-      <AppButton
-        class="page-not-found__button"
-        link="/"
-      >
+      <AppButton class="page-not-found__button" link="/">
         Go back home
       </AppButton>
 

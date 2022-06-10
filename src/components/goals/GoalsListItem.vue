@@ -24,8 +24,8 @@ export default {
 
 <template>
   <li class="goals__list__item">
-    <div :class="[`goals__list__item__image ${imageRight ? 'goals__list__item__image--right' : '' }`]">
-      <img :src="image" />
+    <div :class="[`goals__list__item__image ${ imageRight ? 'goals__list__item__image--right' : ''}`]">
+      <img :src="image" :alt="title"/>
     </div>
 
     <div class="goals__list__item__content">

@@ -7,11 +7,9 @@ export default {
   props: {
     question: {
       type: String,
-      default: 'Question',
     },
     answer: {
       type: String,
-      default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
     isExpanded: {
       type: Boolean,
@@ -29,8 +27,8 @@ export default {
   },
   mounted() {
     // When the component is mounted, check if the isExpanded prop is true so it automatically collapses the accordion
-    this.isExpanded ? this.isOpen = true : this.isOpen = false;
-  }
+    this.isExpanded ? (this.isOpen = true) : (this.isOpen = false);
+  },
 };
 </script>
 

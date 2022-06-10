@@ -1,29 +1,36 @@
 <script>
+import gql from 'graphql-tag';
+
+import { TitleAndText } from '@/components';
 import ActivitiesList from './ActivitiesList.vue';
-import TitleAndText from '../TitleAndText.vue';
 
 export default {
   name: 'ActivitiesSection',
   components: { ActivitiesList, TitleAndText },
-  props: {
-    title: {
-      type: String,
-      default: 'Title',
-    },
-    description: {
-      type: String,
-      default: 'Category',
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            activitiesPageUpcomingTitle
+            activitiesPageUpcomingDescription
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
     },
   },
 };
 </script>
 
 <template>
-  <section class="activities">
+  <section v-if="!this.$apollo.queries.content.loading" class="activities">
     <div class="container">
-      <TitleAndText type="h2" title="Upcoming">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+      <TitleAndText type="h2" :title="content.activitiesPageUpcomingTitle">
+        {{ content.activitiesPageUpcomingDescription }}
       </TitleAndText>
 
       <ActivitiesList />
@@ -54,7 +61,7 @@ export default {
   }
 
   .title-text {
-    margin-bottom: 0; // Remove the margin bottom because we're adding margin top on the cards in CategoriesListItem.vue
+    margin-bottom: 0; // Remove the margin bottom because we're adding margin top on the cards in UpcomingListItem.vue
   }
 }
 </style>

@@ -1,16 +1,22 @@
 <script>
-import gql from 'graphql-tag';
 import { useMeta } from 'vue-meta';
+import gql from 'graphql-tag';
 
-import BaseLayout from '@/layouts/BaseLayout.vue';
-import TitleAndText from '@/components/TitleAndText.vue';
-import ActivitiesSection from '@/components/activities/ActivitiesSection.vue';
+import { ActivitiesSection } from '@/components/activities';
+import { BaseLayout } from '@/layouts';
 import { CategoriesSection } from '@/components/categories';
-import Cta from '../components/cta/Cta.vue';
+import { Cta } from '@/components/cta';
+import { TitleAndText } from '@/components';
 
 export default {
   name: 'Activities',
-  components: { ActivitiesSection, BaseLayout, Cta, CategoriesSection, TitleAndText },
+  components: {
+    ActivitiesSection,
+    BaseLayout,
+    CategoriesSection,
+    Cta,
+    TitleAndText,
+  },
   setup() {
     useMeta({ title: 'Activities' });
   },
@@ -34,7 +40,7 @@ export default {
 </script>
 
 <template>
-  <BaseLayout v-if="!this.$apollo.queries.content.loading">
+  <BaseLayout v-if="!this.$apollo.queries.content.loading" pageClass="activities-page">
     <TitleAndText
       bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846484/bg-images/Brush_blue_bxzmpm.png"
       type="h1"
@@ -50,5 +56,3 @@ export default {
     <Cta />
   </BaseLayout>
 </template>
-
-<style lang="scss"></style>

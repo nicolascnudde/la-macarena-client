@@ -7,7 +7,6 @@ export default {
     },
     image: {
       type: String,
-      default: 'https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp',
     },
     title: {
       type: String,
@@ -22,9 +21,7 @@ export default {
 <template>
   <li class="categories__list__item">
     <div class="categories__list__item__image">
-      <img
-        :src="image"
-      />
+      <img :src="image" :alt="title"/>
     </div>
 
     <h3 class="categories__list__item__title">{{ title }}</h3>

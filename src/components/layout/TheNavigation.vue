@@ -8,23 +8,33 @@ export default {
   <nav class="app__header__nav">
     <ul class="app__header__nav__list">
       <li class="app__header__nav__list__item">
-        <router-link to="/" class="app__header__nav__list__item">Home</router-link>
+        <router-link to="/" class="app__header__nav__list__item">
+          Home
+        </router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <router-link to="/activities" class="app__header__nav__list__item">Activities</router-link>
+        <router-link to="/activities" class="app__header__nav__list__item">
+          Activities
+        </router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <router-link to="/about" class="app__header__nav__list__item">About</router-link>
+        <router-link to="/about" class="app__header__nav__list__item">
+          About
+        </router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <router-link to="/goals" class="app__header__nav__list__item">Goals</router-link>
+        <router-link to="/goals" class="app__header__nav__list__item">
+          Goals
+        </router-link>
       </li>
 
       <li class="app__header__nav__list__item">
-        <router-link to="/contact" class="app__header__nav__list__item">Contact</router-link>
+        <router-link to="/contact" class="app__header__nav__list__item">
+          Contact
+        </router-link>
       </li>
     </ul>
   </nav>

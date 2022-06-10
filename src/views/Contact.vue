@@ -1,15 +1,15 @@
 <script>
-import gql from 'graphql-tag';
 import { useMeta } from 'vue-meta';
+import gql from 'graphql-tag';
 
-import BaseLayout from '../layouts/BaseLayout.vue';
-import ContactForm from '../components/forms/ContactForm.vue';
-import FaqSection from '@/components/faqs/FaqSection.vue';
-import TitleAndText from '../components/TitleAndText.vue';
+import { BaseLayout } from '@/layouts';
+import { ContactForm } from '@/components/forms';
+import { FaqSection } from '@/components/faqs';
+import { TitleAndText } from '@/components';
 
 export default {
   name: 'Contact',
-  components: { BaseLayout, FaqSection, ContactForm, TitleAndText },
+  components: { BaseLayout, ContactForm, FaqSection, TitleAndText },
   setup() {
     useMeta({
       title: 'Contact',
@@ -36,12 +36,12 @@ export default {
 </script>
 
 <template>
-  <BaseLayout v-if="!this.$apollo.queries.content.loading">
+  <BaseLayout v-if="!this.$apollo.queries.content.loading" pageClass="contact-page">
     <TitleAndText
       bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846499/bg-images/Yellow_Paint_byfsl6.png"
       type="h1"
       :title="content.contactPageHeroTitle"
-    >{{ content.contactPageHeroDescription }}
+      >{{ content.contactPageHeroDescription }}
     </TitleAndText>
 
     <ContactForm />
@@ -49,5 +49,3 @@ export default {
     <FaqSection />
   </BaseLayout>
 </template>
-
-<style lang="scss"></style>

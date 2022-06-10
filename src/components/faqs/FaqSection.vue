@@ -1,32 +1,40 @@
 <script>
+import gql from 'graphql-tag';
+
+import { TitleAndText } from '@/components';
 import FaqList from './FaqList.vue';
-import TitleAndText from '../TitleAndText.vue';
 
 export default {
-  name: 'Categories',
+  name: 'FaqSection',
   components: { FaqList, TitleAndText },
-  props: {
-    title: {
-      type: String,
-      default: 'Title',
-    },
-    description: {
-      type: String,
-      default: 'Category',
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            contactPageFaqTitle
+            contactPageFaqDescription
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
     },
   },
 };
 </script>
 
 <template>
-  <section class="faqs">
+  <section v-if="!this.$apollo.queries.content.loading" class="faqs">
     <div class="container">
       <TitleAndText
         bgImageUrl="https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846498/bg-images/Brush_Pink_4_dzjij3.png"
         type="h2"
-        title="FAQ's"
+        :title="content.contactPageFaqTitle"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        {{ content.contactPageFaqDescription ? content.contactPageFaqDescription : null }}
       </TitleAndText>
 
       <FaqList />

@@ -3,11 +3,11 @@ import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
 import { BaseLayout } from '@/layouts';
+import { Cta } from '@/components/cta';
 import { Hero } from '@/components/hero';
 import { InfoBlock } from '@/components';
-import { Cta } from '@/components/cta';
-import { TeamSection } from '@/components/team';
 import { placeholderImage } from '@/constants';
+import { TeamSection } from '@/components/team';
 
 export default {
   name: 'Home',
@@ -27,6 +27,7 @@ export default {
             homePageHeroImage {
               publicUrl
             }
+            homePageHeroButtonText
             homePageAboutTitle
             homePageAboutDescription
           }
@@ -41,7 +42,7 @@ export default {
 </script>
 
 <template>
-  <BaseLayout v-if="!this.$apollo.queries.content.loading">
+  <BaseLayout v-if="!this.$apollo.queries.content.loading" pageClass="home-page">
     <Hero
       :title="content.homePageHeroTitle"
       :description="content.homePageHeroDescription"
@@ -50,7 +51,11 @@ export default {
           ? content.homePageHeroImage.publicUrl
           : placeholderImage
       "
-      buttonText="Upcoming activities"
+      :buttonText="
+        content.homePageHeroButtonText
+          ? content.homePageHeroButtonText
+          : 'Upcoming activities'
+      "
       buttonLink="/activities"
     />
 

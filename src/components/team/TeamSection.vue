@@ -1,9 +1,9 @@
 <script>
 import gql from 'graphql-tag';
 
-import TeamList from './TeamList.vue';
-import TitleAndText from '../TitleAndText.vue';
 import { placeholderImage } from '@/constants';
+import { TitleAndText } from '@/components';
+import TeamList from './TeamList.vue';
 
 export default {
   name: 'Team',
@@ -41,9 +41,7 @@ export default {
   <section v-if="!this.$apollo.queries.content.loading" class="team">
     <div class="team__container container">
       <div :class="`team__image ${imageRight ? 'team__image--right' : ''}`">
-        <img
-          :src="content.whoWeAreImage ? content.whoWeAreImage.publicUrl : placeholderImage"
-        />
+        <img :src="content.whoWeAreImage ? content.whoWeAreImage.publicUrl : placeholderImage"/>
       </div>
 
       <div class="team__content">

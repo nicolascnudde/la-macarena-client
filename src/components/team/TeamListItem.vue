@@ -2,9 +2,6 @@
 export default {
   name: 'TeamListItem',
   props: {
-    key: {
-      type: String,
-    },
     image: {
       type: String,
     },
@@ -16,9 +13,9 @@ export default {
 </script>
 
 <template>
-  <li class="team__list__item" :key="key">
+  <li class="team__list__item">
     <figure class="team__list__item__figure">
-      <img class="team__list__item__figure__img" :src="image" />
+      <img class="team__list__item__figure__img" :src="image" :alt="firstName" />
 
       <figcaption class="team__list__item__figure__caption">
         {{ firstName }}
@@ -50,7 +47,7 @@ export default {
 
     &__caption {
       color: $clrPrimary;
-      font-family: 'Comforter Brush', cursive;
+      font-family: 'Comforter Brush', 'cursive';
       font-size: $fontSize40;
       position: absolute;
       bottom: 0.5rem;

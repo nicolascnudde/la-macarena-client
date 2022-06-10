@@ -12,7 +12,7 @@ export default {
     activities: {
       query: gql`
         query activities {
-          activities {
+          activities(orderBy: { date: asc }) {
             id
             title
             description
@@ -47,7 +47,7 @@ export default {
       :id="activity.id"
       :image="activity.image ? activity.image.publicUrl : placeholderImage"
       :price="activity.price"
-      :slots="activity.numberOfSlots"
+      :slots="activity.slots"
       :title="activity.title"
       :toDate="activity.toDate"
     />

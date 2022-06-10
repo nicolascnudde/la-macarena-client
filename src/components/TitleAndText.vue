@@ -4,23 +4,20 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Default title',
     },
     type: {
       type: String,
-      default: 'h2',
     },
     bgImageUrl: {
       type: String,
-      default: '',
     },
   },
   methods: {
-    // Check if the type property is h1
+    // Function to check if the type property is h1
     isH1() {
       return this.type === 'h1' ?? this.type === 'H1';
     },
-  }
+  },
 };
 </script>
 

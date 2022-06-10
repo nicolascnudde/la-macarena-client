@@ -1,16 +1,18 @@
 <script>
 import gql from 'graphql-tag';
 
+import { placeholderImage } from '@/constants';
 import UspsListItem from './UspsListItem.vue';
 
 export default {
   name: 'UspsList',
   components: { UspsListItem },
+  data: { placeholderImage },
   apollo: {
     usps: {
       query: gql`
         query usps {
-          usps {
+          usps(orderBy: { id: asc }) {
             id
             title
             description
@@ -26,17 +28,13 @@ export default {
 </script>
 
 <template>
-  <ul class="usps__list">
+  <ul v-if="!this.$apollo.queries.usps.loading" class="usps__list">
     <UspsListItem
       v-for="usp in usps"
       :key="usp.id"
       :title="usp.title"
       :description="usp.description"
-      :image="
-        usp.image
-          ? usp.image.publicUrl
-          : 'https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp'
-      "
+      :image="usp.image ? usp.image.publicUrl : placeholderImage"
     />
   </ul>
 </template>

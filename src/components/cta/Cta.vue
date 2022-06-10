@@ -1,7 +1,7 @@
 <script>
 import gql from 'graphql-tag';
 
-import AppButton from '../button/AppButton.vue';
+import { AppButton } from '@/components/button';
 import { placeholderImage } from '@/constants';
 
 export default {
@@ -19,6 +19,7 @@ export default {
             ctaImage {
               publicUrl
             }
+            ctaButtonText
           }
         }
       `,
@@ -37,20 +38,20 @@ export default {
         <h2 class="cta__content__title">{{ content.ctaTitle }}</h2>
 
         <div class="cta__content__image cta__content__image--mobile">
-          <img src="https://i.imgur.com/AqjbcUM.jpg" alt="alt text" />
+          <img :src="content.ctaImage ? content.ctaImage.publicUrl : placeholderImage" :alt="content.ctaTitle"/>
         </div>
 
         <p class="cta__content__description">
-        {{ content.ctaDescription }}
+          {{ content.ctaDescription }}
         </p>
 
-        <AppButton class="cta__content__button" type="primary" link="/contact"
-          >Get in touch</AppButton
-        >
+        <AppButton class="cta__content__button" type="primary" link="/contact">
+          {{ content.ctaButtonText }}
+        </AppButton>
       </div>
 
       <div class="cta__content__image cta__content__image--desktop">
-        <img :src="content.ctaImage ? content.ctaImage.publicUrl : placeholderImage" :alt="content.ctaTitle" />
+        <img :src="content.ctaImage ? content.ctaImage.publicUrl : placeholderImage" :alt="content.ctaTitle"/>
       </div>
     </div>
   </section>

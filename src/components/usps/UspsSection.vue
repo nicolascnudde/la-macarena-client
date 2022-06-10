@@ -1,10 +1,9 @@
 <script>
 import UspsList from './UspsList.vue';
-import TitleAndText from '../TitleAndText.vue';
 
 export default {
   name: 'Usps',
-  components: { TitleAndText, UspsList },
+  components: { UspsList },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <script>
-import AppButton from '../button/AppButton.vue';
+import { AppButton } from '@/components/button';
 
 export default {
   name: 'ActivitiesList',
@@ -29,6 +29,9 @@ export default {
     toDate: {
       type: String,
     },
+    slots: {
+      type: Number,
+    },
   },
   methods: {
     // Convert the TZ date string to make it readable
@@ -50,24 +53,14 @@ export default {
 
       <div class="upcoming-activities__list__item--top__container">
         <div class="upcoming-activities__list__item--top__box__container">
-          <span class="upcoming-activities__list__item--top__box"
-            >€ {{ price }}</span
-          >
+          <span class="upcoming-activities__list__item--top__box">€ {{ price }}</span>
 
-          <span
-            v-if="!toDate"
-            class="upcoming-activities__list__item--top__box"
-            >{{ parseDate(date) }}</span
-          >
-          <span v-else class="upcoming-activities__list__item--top__box"
-            >{{ parseDate(date) }} – {{ parseDate(toDate) }}</span
-          >
+          <span v-if="!toDate" class="upcoming-activities__list__item--top__box">{{ parseDate(date) }}</span>
+          <span v-else class="upcoming-activities__list__item--top__box">{{ parseDate(date) }} — {{ parseDate(toDate) }}</span>
         </div>
 
         <a href="#categories">
-          <span class="upcoming-activities__list__item--top__category">{{
-            categoryTitle
-          }}</span>
+          <span class="upcoming-activities__list__item--top__category">{{ categoryTitle }}</span>
         </a>
       </div>
     </div>
@@ -81,11 +74,24 @@ export default {
         {{ description }}
       </p>
 
+      <p v-if="slots > 0" class="upcoming-activities__list__item--bottom__slots">{{ slots }} slots remaining</p>
+      
+      <p v-else class="upcoming-activities__list__item--bottom__slots">Sorry... no more slots remaining!</p>
+
       <AppButton
+        v-if="slots > 0"
         type="secondary"
         :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
       >
         Reserve / More info
+      </AppButton>
+
+      <AppButton
+        v-else
+        type="secondary"
+        :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
+      >
+        More info
       </AppButton>
     </div>
   </li>
@@ -159,7 +165,17 @@ export default {
     }
 
     &__description {
+      margin-bottom: 1rem;
+    }
+
+    &__slots {
+      font-size: $fontSize16;
       margin-bottom: 2rem;
+      font-weight: $fontWeightBold;
+    }
+
+    &__full {
+      font-weight: $fontWeightBold;
     }
   }
 }

@@ -4,7 +4,6 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Who we are',
     },
     description: {
       type: String,
@@ -42,9 +41,7 @@ export default {
 
   &__container {
     background: linear-gradient(90deg, $clrRed 50%, transparent 0);
-    background-position: calc(
-      25vw - 1rem
-    ); // Center the background minus 1 rem padding from the container parent
+    background-position: calc(25vw - 1rem); // Center the background minus 1 rem padding from the container parent
 
     @include responsive(tablet) {
       position: relative;

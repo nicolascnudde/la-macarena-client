@@ -1,6 +1,7 @@
 <script>
-import FaqListItem from './FaqListItem.vue';
 import gql from 'graphql-tag';
+
+import FaqListItem from './FaqListItem.vue';
 
 export default {
   name: 'FaqList',
@@ -9,7 +10,7 @@ export default {
     faqs: {
       query: gql`
         query faqs {
-          faqs {
+          faqs(orderBy: { id: asc }) {
             id
             question
             answer

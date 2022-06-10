@@ -36,7 +36,7 @@ export default {
           <p class="activity-details__list__item__label">Slots</p>
 
           <p class="activity-details__list__item__value activity-details__list__item__value--slots">
-            {{ slots }}
+            {{ slots ? slots : 'Sold out!' }}
           </p>
         </li>
 

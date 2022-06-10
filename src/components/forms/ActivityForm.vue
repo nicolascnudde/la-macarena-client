@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import emailjs from '@emailjs/browser';
 import gql from 'graphql-tag';
 
-import AppButton from '../button/AppButton.vue';
+import { AppButton } from '@/components/button';
 import { placeholderImage } from '@/constants';
 
 // Load the environment variables for the email service
@@ -33,6 +33,9 @@ export default {
     activityToDate: {
       type: String,
     },
+    activitySlots: {
+      type: Number,
+    },
   },
   data() {
     // Using Yup to validate the form
@@ -54,7 +57,8 @@ export default {
       actTitle: Yup.string(),
       actPrice: Yup.number(),
       actDate: Yup.string(),
-      message: Yup.string().min(2, 'message is too short'),
+      message: Yup.string()
+        .min(2, 'message is too short'),
     });
 
     return {
@@ -118,7 +122,7 @@ export default {
           publicKey
         );
       } catch (error) {
-        console.log(error);
+        throw new Error(error);
       }
 
       // Reset the contact form
@@ -132,7 +136,7 @@ export default {
 </script>
 
 <template>
-  <section class="activity-form">
+  <section v-if="this.activitySlots > 0" class="activity-form">
     <VeeForm
       v-slot="{ handleSubmit }"
       :validation-schema="validationSchema"
@@ -141,8 +145,9 @@ export default {
     >
       <div class="activity-form__content">
         <h2 class="activity-form__content__title">Ready to reserve?</h2>
+
         <div class="activity-form__content__image">
-          <img :src="placeholderImage" alt="activity form image"/>
+          <img :src="placeholderImage" alt="activity form image" />
         </div>
       </div>
 
@@ -152,16 +157,14 @@ export default {
         ref="activity_form"
         @submit="handleSubmit($event, onSubmit)"
       >
-        <div
-          class="activity-form__form__field activity-form__form__field--first-name"
-        >
+        <div class="activity-form__form__field activity-form__form__field--first-name">
           <label for="firstName">First name</label>
 
           <Field
             id="firstName"
             name="firstName"
-            type="text"
             placeholder="What's your first name?"
+            type="text"
           />
 
           <ErrorMessage
@@ -170,16 +173,14 @@ export default {
           />
         </div>
 
-        <div
-          class="activity-form__form__field activity-form__form__field--last-name"
-        >
+        <div class="activity-form__form__field activity-form__form__field--last-name">
           <label for="lastName">Last name</label>
 
           <Field
             id="lastName"
             name="lastName"
-            type="text"
             placeholder="What's your last name?"
+            type="text"
           />
 
           <ErrorMessage
@@ -188,16 +189,14 @@ export default {
           />
         </div>
 
-        <div
-          class="activity-form__form__field activity-form__form__field--email"
-        >
+        <div class="activity-form__form__field activity-form__form__field--email">
           <label for="email">Email</label>
 
           <Field
             id="email"
             name="email"
-            type="email"
             placeholder="To where can we write you?"
+            type="email"
           />
 
           <ErrorMessage
@@ -206,16 +205,14 @@ export default {
           />
         </div>
 
-        <div
-          class="activity-form__form__field activity-form__form__field--phone"
-        >
+        <div class="activity-form__form__field activity-form__form__field--phone">
           <label for="phone">Phone number</label>
 
           <Field
             id="phone"
             name="phone"
-            type="tel"
             placeholder="Which number can we call to reach you?"
+            type="tel"
           />
 
           <ErrorMessage
@@ -224,17 +221,15 @@ export default {
           />
         </div>
 
-        <div
-          class="activity-form__form__field activity-form__form__field--activity-title"
-        >
+        <div class="activity-form__form__field activity-form__form__field--activity-title">
           <label>Activity</label>
 
           <Field
             id="activityTitle"
             name="activityTitle"
             type="text"
-            :value="activityTitle"
             readonly
+            :value="activityTitle"
           />
 
           <ErrorMessage
@@ -243,17 +238,15 @@ export default {
           />
         </div>
 
-        <div
-          class="activity-form__form__field activity-form__form__field--activity-price"
-        >
+        <div class="activity-form__form__field activity-form__form__field--activity-price">
           <label>Price</label>
 
           <Field
             id="activityPrice"
             name="activityPrice"
             type="text"
-            :value="activityPrice"
             readonly
+            :value="activityPrice"
           />
 
           <ErrorMessage
@@ -262,17 +255,15 @@ export default {
           />
         </div>
 
-        <div
-          class="activity-form__form__field activity-form__form__field--activity-date"
-        >
+        <div class="activity-form__form__field activity-form__form__field--activity-date">
           <label>Date</label>
 
           <Field
             id="activityDate"
             name="activityDate"
             type="text"
-            :value="`${parseDate(activityDate)} ${activityToDate ? ' – ' + parseDate(activityToDate) : ''}`"
             readonly
+            :value="`${parseDate(activityDate)} ${activityToDate ? ' – ' + parseDate(activityToDate) : ''}`"
           />
 
           <ErrorMessage
@@ -281,17 +272,15 @@ export default {
           />
         </div>
 
-        <div
-          class="activity-form__form__field activity-form__form__field--message"
-        >
+        <div class="activity-form__form__field activity-form__form__field--message">
           <label for="message">Message</label>
 
           <Field
+            as="textarea"
             id="message"
             name="message"
-            as="textarea"
-            rows="4"
             placeholder="What do you want to tell us?"
+            rows="4"
           />
 
           <ErrorMessage
@@ -304,9 +293,15 @@ export default {
       </form>
 
       <p v-if="isSubmitted" class="activity-form__form__success">
-        Gracias! Your message has been sent.
+        Gracias... the form has been successfully submitted!
       </p>
     </VeeForm>
+  </section>
+
+  <section v-else class="activity-fully-booked">
+    <div class="container">
+      <p class="activity-fully-booked__text">Sorry... this activity is fully booked!</p>
+    </div>
   </section>
 </template>
 
@@ -416,6 +411,21 @@ export default {
       justify-content: center;
       align-items: center;
     }
+  }
+}
+
+.activity-fully-booked {
+  text-align: center;
+  background: $clrBlue;
+  margin-bottom: 5rem;
+  padding: 3rem 0;
+
+  @include responsive(tablet) {
+    margin-bottom: 8rem;
+  }
+
+  &__text {
+    font-size: $fontSize20;
   }
 }
 </style>

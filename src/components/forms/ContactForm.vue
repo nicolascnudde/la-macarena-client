@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import emailjs from '@emailjs/browser';
 import gql from 'graphql-tag';
 
-import AppButton from '../button/AppButton.vue';
+import { AppButton } from '@/components/button';
 import { placeholderImage } from '@/constants';
 
 // Load the environment variables for the email service
@@ -40,9 +40,15 @@ export default {
   data() {
     // Using Yup to validate the form
     const validationSchema = Yup.object().shape({
-      name: Yup.string().required('name is required').min(2, 'name is too short'),
-      email: Yup.string().required('email is required').email('email is invalid'),
-      message: Yup.string().required('message is required').min(10, 'message is too short'),
+      name: Yup.string()
+        .required('name is required')
+        .min(2, 'name is too short'),
+      email: Yup.string()
+        .required('email is required')
+        .email('email is invalid'),
+      message: Yup.string()
+        .required('message is required')
+        .min(10, 'message is too short'),
     });
 
     return {
@@ -59,10 +65,10 @@ export default {
           serviceId,
           templateId,
           this.$refs.contact_form,
-          publicKey,
+          publicKey
         );
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        throw new Error(error);
       }
 
       // Reset the contact form
@@ -85,10 +91,9 @@ export default {
     >
       <div v-if="!this.$apollo.queries.content.loading" class="contact-form__content">
         <h2 class="contact-form__content__title">Let's Talk</h2>
+
         <div class="contact-form__content__image">
-          <img
-            :src="content.contactPageFormImage ? content.contactPageFormImage.publicUrl : placeholderImage"
-          />
+          <img :src="content.contactPageFormImage ? content.contactPageFormImage.publicUrl : placeholderImage"/>
         </div>
       </div>
 
@@ -104,8 +109,8 @@ export default {
           <Field
             id="name"
             name="name"
-            type="text"
             placeholder="Como te llamas?"
+            type="text"
           />
 
           <ErrorMessage class="contact-form__form__field__alert" name="name" />
@@ -117,24 +122,22 @@ export default {
           <Field
             id="email"
             name="email"
-            type="email"
             placeholder="Where can we contact you?"
+            type="email"
           />
 
           <ErrorMessage class="contact-form__form__field__alert" name="email" />
         </div>
 
-        <div
-          class="contact-form__form__field contact-form__form__field--message"
-        >
+        <div class="contact-form__form__field contact-form__form__field--message">
           <label for="message">Message</label>
 
           <Field
+            as="textarea"
             id="message"
             name="message"
-            as="textarea"
-            rows="4"
             placeholder="What do you want to tell us?"
+            rows="4"
           />
 
           <ErrorMessage
@@ -147,7 +150,7 @@ export default {
       </form>
 
       <p v-if="isSubmitted" class="contact-form__form__success">
-        Gracias! Your message has been sent.
+        Gracias... your message has been sent!
       </p>
     </VeeForm>
   </section>
