@@ -147,7 +147,7 @@ export default {
         <h2 class="activity-form__content__title">Ready to reserve?</h2>
 
         <div class="activity-form__content__image">
-          <img :src="placeholderImage" alt="activity form image" />
+          <img :src="placeholderImage" alt="ready to reserve" />
         </div>
       </div>
 
@@ -222,7 +222,7 @@ export default {
         </div>
 
         <div class="activity-form__form__field activity-form__form__field--activity-title">
-          <label>Activity</label>
+          <label for="activityTitle">Activity</label>
 
           <Field
             id="activityTitle"
@@ -239,7 +239,7 @@ export default {
         </div>
 
         <div class="activity-form__form__field activity-form__form__field--activity-price">
-          <label>Price</label>
+          <label for="activityPrice">Price</label>
 
           <Field
             id="activityPrice"
@@ -256,7 +256,7 @@ export default {
         </div>
 
         <div class="activity-form__form__field activity-form__form__field--activity-date">
-          <label>Date</label>
+          <label for="activityDate">Date</label>
 
           <Field
             id="activityDate"

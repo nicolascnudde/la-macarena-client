@@ -93,7 +93,7 @@ export default {
         <h2 class="contact-form__content__title">Let's Talk</h2>
 
         <div class="contact-form__content__image">
-          <img :src="content.contactPageFormImage ? content.contactPageFormImage.publicUrl : placeholderImage"/>
+          <img :src="content.contactPageFormImage ? content.contactPageFormImage.publicUrl : placeholderImage" alt="let's talk"/>
         </div>
       </div>
 
