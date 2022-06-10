@@ -41,7 +41,7 @@ export default {
   <section v-if="!this.$apollo.queries.content.loading" class="team">
     <div class="team__container container">
       <div :class="`team__image ${imageRight ? 'team__image--right' : ''}`">
-        <img :src="content.whoWeAreImage ? content.whoWeAreImage.publicUrl : placeholderImage"/>
+        <img :src="content.whoWeAreImage ? content.whoWeAreImage.publicUrl : placeholderImage" :alt="content.whoWeAreTitle"/>
       </div>
 
       <div class="team__content">
