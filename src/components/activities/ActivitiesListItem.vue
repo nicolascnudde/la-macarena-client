@@ -83,7 +83,7 @@ export default {
         type="secondary"
         :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
       >
-        Reserve / More info
+        Reserve / See details
       </AppButton>
 
       <AppButton
@@ -91,7 +91,7 @@ export default {
         type="secondary"
         :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
       >
-        More info
+        See details
       </AppButton>
     </div>
   </li>

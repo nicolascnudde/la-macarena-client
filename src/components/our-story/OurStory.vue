@@ -39,9 +39,9 @@ export default {
       <div class="our-story__background"></div>
 
       <div class="our-story__image">
-        <img :src="content.aboutPageStoryImageOne ? content.aboutPageStoryImageOne.publicUrl : placeholderImage"/>
+        <img :src="content.aboutPageStoryImageOne ? content.aboutPageStoryImageOne.publicUrl : placeholderImage" :alt="content.aboutPageStoryTitle"/>
 
-        <img :src="content.aboutPageStoryImageTwo ? content.aboutPageStoryImageTwo.publicUrl : placeholderImage"/>
+        <img :src="content.aboutPageStoryImageTwo ? content.aboutPageStoryImageTwo.publicUrl : placeholderImage" :alt="content.aboutPageStoryTitle"/>
       </div>
 
       <div class="our-story__content">

@@ -18,7 +18,7 @@ export default {
 <template>
   <li class="usps__list__item">
     <div class="usps__list__item__image">
-      <img :src="image" />
+      <img :src="image" :alt="title"/>
     </div>
 
     <h3 class="usps__list__item__title">{{ title }}</h3>
