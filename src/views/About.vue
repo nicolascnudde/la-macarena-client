@@ -9,10 +9,12 @@ import TitleAndText from '@/components/TitleAndText.vue';
 import Usps from '@/components/usps/Usps.vue';
 import OurStory from '@/components/our-story/OurStory.vue';
 import Cta from '@/components/cta/Cta.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'About',
   components: { BaseLayout, Cta, Hero, OurStory, TeamSection, TitleAndText, Usps },
+  data: { placeholderImage },
   setup() {
     useMeta({ title: 'About' });
   },
@@ -43,7 +45,7 @@ export default {
     <Hero
       :title="content.aboutPageHeroTitle"
       :description="content.aboutPageHeroDescription"
-      :image="content.aboutPageHeroImage.publicUrl"
+      :image="content.aboutPageHeroImage ? content.aboutPageHeroImage.publicUrl : placeholderImage"
       noButton
     />
 

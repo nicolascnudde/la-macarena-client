@@ -2,10 +2,12 @@
 import gql from 'graphql-tag';
 
 import GoalsListItem from './GoalsListItem.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'GoalsList',
   components: { GoalsListItem },
+  data: { placeholderImage },
   apollo: {
     goals: {
       query: gql`
@@ -33,11 +35,7 @@ export default {
       :key="goal.id"
       :title="goal.title"
       :description="goal.description"
-      :image="
-        goal.image
-          ? goal.image.publicUrl
-          : 'https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp'
-      "
+      :image="goal.image ? goal.image.publicUrl : placeholderImage"
       :imageRight="goal.imageRight"
     />
   </ul>

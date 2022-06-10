@@ -2,10 +2,12 @@
 import gql from 'graphql-tag';
 
 import AppButton from '../button/AppButton.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'Cta',
   components: { AppButton },
+  data: { placeholderImage },
   apollo: {
     content: {
       query: gql`
@@ -48,7 +50,7 @@ export default {
       </div>
 
       <div class="cta__content__image cta__content__image--desktop">
-        <img :src="content.ctaImage.publicUrl" :alt="content.ctaTitle" />
+        <img :src="content.ctaImage ? content.ctaImage.publicUrl : placeholderImage" :alt="content.ctaTitle" />
       </div>
     </div>
   </section>

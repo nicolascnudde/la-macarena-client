@@ -18,12 +18,11 @@ export default {
 <template>
   <li class="team__list__item" :key="key">
     <figure class="team__list__item__figure">
-      <img
-        class="team__list__item__figure__img"
-        :src="image"
-      />
+      <img class="team__list__item__figure__img" :src="image" />
 
-      <figcaption class="team__list__item__figure__caption">{{ firstName }}</figcaption>
+      <figcaption class="team__list__item__figure__caption">
+        {{ firstName }}
+      </figcaption>
     </figure>
   </li>
 </template>

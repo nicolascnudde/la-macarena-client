@@ -2,10 +2,12 @@
 import gql from 'graphql-tag';
 
 import TeamListItem from './TeamListItem.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'TeamList',
   components: { TeamListItem },
+  data: { placeholderImage },
   apollo: {
     members: {
       query: gql`
@@ -31,18 +33,15 @@ export default {
       v-for="member in members"
       :key="member.id"
       :firstName="member.firstName"
-      :image="
-        member.image
-          ? member.image.publicUrl
-          : 'https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp'
-      "
+      :image="member.image ? member.image.publicUrl : placeholderImage"
     />
   </ul>
 </template>
 
 <style lang="scss">
 .team__list {
-  background: url('https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846498/bg-images/Brush_Pink_1_q1htng.png') center/200% no-repeat;
+  background: url('https://res.cloudinary.com/dvb6lcmag/image/upload/v1653846498/bg-images/Brush_Pink_1_q1htng.png')
+    center/200% no-repeat;
   position: relative;
   display: grid;
   grid-template-columns: repeat(1, 1fr);

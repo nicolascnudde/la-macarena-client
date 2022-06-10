@@ -7,6 +7,7 @@ import ActivityForm from '@/components/forms/ActivityForm.vue';
 import ActivitySection from '@/components/activity/ActivitySection.vue';
 import Cta from '@/components/cta/Cta.vue';
 import Hero from '@/components/hero/Hero.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'Activity',
@@ -22,6 +23,7 @@ export default {
   },
   data() {
     return {
+      placeholderImage,
       routeParamId: this.$route.params.id,
     };
   },
@@ -59,7 +61,7 @@ export default {
 <template>
   <BaseLayout v-if="!this.$apollo.queries.activity.loading" pageClass="activity-page">
     <Hero
-      :image="activity.image.publicUrl"
+      :image="activity.image ? activity.image.publicUrl : placeholderImage"
       :title="activity.title"
       :description="activity.description"
       buttonLink="/activities"

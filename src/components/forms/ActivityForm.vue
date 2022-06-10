@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import gql from 'graphql-tag';
 
 import AppButton from '../button/AppButton.vue';
+import { placeholderImage } from '@/constants';
 
 // Load the environment variables for the email service
 const serviceId = import.meta.env.VITE_EMAIL_JS_SERVICE_ID;
@@ -57,8 +58,9 @@ export default {
     });
 
     return {
-      validationSchema,
       isSubmitted: false,
+      placeholderImage,
+      validationSchema,
     };
   },
   methods: {
@@ -140,9 +142,7 @@ export default {
       <div class="activity-form__content">
         <h2 class="activity-form__content__title">Ready to reserve?</h2>
         <div class="activity-form__content__image">
-          <img
-            src="https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp"
-          />
+          <img :src="placeholderImage" alt="activity form image"/>
         </div>
       </div>
 

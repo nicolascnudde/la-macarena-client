@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import gql from 'graphql-tag';
 
 import AppButton from '../button/AppButton.vue';
+import { placeholderImage } from '@/constants';
 
 // Load the environment variables for the email service
 const serviceId = import.meta.env.VITE_EMAIL_JS_SERVICE_ID;
@@ -45,8 +46,9 @@ export default {
     });
 
     return {
-      validationSchema,
       isSubmitted: false,
+      placeholderImage,
+      validationSchema,
     };
   },
   methods: {
@@ -85,7 +87,7 @@ export default {
         <h2 class="contact-form__content__title">Let's Talk</h2>
         <div class="contact-form__content__image">
           <img
-            :src="content.contactPageFormImage.publicUrl"
+            :src="content.contactPageFormImage ? content.contactPageFormImage.publicUrl : placeholderImage"
           />
         </div>
       </div>

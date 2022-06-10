@@ -2,10 +2,12 @@
 import gql from 'graphql-tag';
 
 import TitleAndText from '../TitleAndText.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'Our Story',
   components: { TitleAndText },
+  data: { placeholderImage },
   apollo: {
     content: {
       query: gql`
@@ -28,23 +30,6 @@ export default {
       },
     },
   },
-  // props: {
-  //   title: {
-  //     type: String,
-  //     default: 'Our Story',
-  //   },
-  //   description: {
-  //     type: String,
-  //     default:
-  //       'This is the description of the our story section. Placeholder text until the description is loaded in from the cms.',
-  //   },
-  //   imageOneUrl: {
-  //     type: String,
-  //   },
-  //   imageTwoUrl: {
-  //     type: String,
-  //   },
-  // },
 };
 </script>
 
@@ -54,9 +39,9 @@ export default {
       <div class="our-story__background"></div>
 
       <div class="our-story__image">
-        <img :src="content.aboutPageStoryImageOne.publicUrl" />
+        <img :src="content.aboutPageStoryImageOne ? content.aboutPageStoryImageOne.publicUrl : placeholderImage" />
 
-        <img :src="content.aboutPageStoryImageTwo.publicUrl" />
+        <img :src="content.aboutPageStoryImageTwo ? content.aboutPageStoryImageTwo.publicUrl : placeholderImage" />
       </div>
 
       <div class="our-story__content">

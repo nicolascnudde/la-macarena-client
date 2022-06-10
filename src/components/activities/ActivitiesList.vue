@@ -1,10 +1,13 @@
 <script>
-import ActivitiesListItem from './ActivitiesListItem.vue';
 import gql from 'graphql-tag';
+
+import ActivitiesListItem from './ActivitiesListItem.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'ActivitiesList',
   components: { ActivitiesListItem },
+  data: { placeholderImage },
   apollo: {
     activities: {
       query: gql`
@@ -21,7 +24,6 @@ export default {
             category {
               id
               title
-              description
             }
             date
             toDate
@@ -38,12 +40,12 @@ export default {
     <ActivitiesListItem
       v-for="activity in activities"
       :key="activity.id"
-      :categoryTitle="activity.category.title"
+      :categoryTitle="activity.category ? activity.category.title : null"
       :date="activity.date"
       :description="activity.description"
       :fromDate="activity.fromDate"
       :id="activity.id"
-      :image="activity.image.publicUrl"
+      :image="activity.image ? activity.image.publicUrl : placeholderImage"
       :price="activity.price"
       :slots="activity.numberOfSlots"
       :title="activity.title"

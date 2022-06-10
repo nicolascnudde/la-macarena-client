@@ -2,10 +2,12 @@
 import gql from 'graphql-tag';
 
 import CategoriesListItem from './CategoriesListItem.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'CategoriesList',
   components: { CategoriesListItem },
+  data: { placeholderImage },
   apollo: {
     categories: {
       query: gql`
@@ -36,7 +38,7 @@ export default {
       :image="
         category.image
           ? category.image.publicUrl
-          : 'https://res.cloudinary.com/dvb6lcmag/image/upload/v1654678968/content/default-image_onwn5a.webp'
+          : placeholderImage
       "
     />
   </ul>

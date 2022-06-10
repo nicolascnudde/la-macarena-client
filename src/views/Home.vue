@@ -7,10 +7,12 @@ import Hero from '@/components/hero/Hero.vue';
 import InfoBlock from '../components/InfoBlock.vue';
 import Cta from '../components/cta/Cta.vue';
 import TeamSection from '@/components/team/TeamSection.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'Home',
   components: { BaseLayout, Cta, Hero, InfoBlock, TeamSection },
+  data: { placeholderImage },
   setup() {
     useMeta({ title: '' });
   },
@@ -43,7 +45,11 @@ export default {
     <Hero
       :title="content.homePageHeroTitle"
       :description="content.homePageHeroDescription"
-      :image="content.homePageHeroImage.publicUrl"
+      :image="
+        content.homePageHeroImage
+          ? content.homePageHeroImage.publicUrl
+          : placeholderImage
+      "
       buttonText="Upcoming activities"
       buttonLink="/activities"
     />

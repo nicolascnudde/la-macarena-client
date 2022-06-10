@@ -74,9 +74,7 @@ export default {
 
     <div class="upcoming-activities__list__item--bottom">
       <div class="upcoming-activities__list__item--bottom__image">
-        <img
-          :src="image"
-        />
+        <img :src="image" :alt="title" />
       </div>
 
       <p class="upcoming-activities__list__item--bottom__description">

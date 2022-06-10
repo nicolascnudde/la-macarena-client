@@ -3,10 +3,12 @@ import gql from 'graphql-tag';
 
 import TeamList from './TeamList.vue';
 import TitleAndText from '../TitleAndText.vue';
+import { placeholderImage } from '@/constants';
 
 export default {
   name: 'Team',
   components: { TeamList, TitleAndText },
+  data: { placeholderImage },
   props: {
     imageRight: {
       type: Boolean,
@@ -40,7 +42,7 @@ export default {
     <div class="team__container container">
       <div :class="`team__image ${imageRight ? 'team__image--right' : ''}`">
         <img
-          :src="content.whoWeAreImage.publicUrl"
+          :src="content.whoWeAreImage ? content.whoWeAreImage.publicUrl : placeholderImage"
         />
       </div>
 
