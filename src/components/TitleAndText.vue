@@ -10,6 +10,7 @@ export default {
     },
     bgImageUrl: {
       type: String,
+      default: '',
     },
   },
   methods: {
