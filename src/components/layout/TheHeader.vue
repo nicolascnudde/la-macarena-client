@@ -27,7 +27,7 @@ export default {
         </div>
       </router-link>
 
-      <button class="btn btn--hamburger" @click="toggleNav">
+      <button class="button button--hamburger" @click="toggleNav">
         <div></div>
       </button>
     </div>
@@ -89,7 +89,7 @@ export default {
   @include responsive(desktop) {
     flex-direction: row;
 
-    .btn--hamburger {
+    .button--hamburger {
       display: none;
     }
 
@@ -138,7 +138,7 @@ export default {
       }
     }
 
-    .btn--hamburger {
+    .button--hamburger {
       &:before {
         transform: translateY(12px) rotate(135deg);
         width: 100%;

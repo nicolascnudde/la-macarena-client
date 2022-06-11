@@ -103,7 +103,7 @@ export default {
         order: -1;
         margin-bottom: 2rem;
 
-        .btn__text {
+        .button__text {
           font-size: $fontSize16;
 
           &::before {

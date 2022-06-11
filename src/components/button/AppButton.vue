@@ -18,27 +18,27 @@ export default {
 </script>
 
 <template>
-  <button :class="`btn btn--${type}`">
+  <button :class="`button button--${type}`">
     <router-link v-if="link" :to="link">
-      <span class="btn__text"><slot></slot></span>
+      <span class="button__text"><slot></slot></span>
 
-      <ArrowRight class="btn__icon" />
+      <ArrowRight class="button__icon" />
     </router-link>
 
-    <div v-else class="btn__content">
-      <span class="btn__text"><slot></slot></span>
+    <div v-else class="button__content">
+      <span class="button__text"><slot></slot></span>
 
-      <ArrowRight class="btn__icon" />
+      <ArrowRight class="button__icon" />
     </div>
   </button>
 </template>
 
 <style lang="scss">
-.btn {
+.button {
   &--primary,
   &--secondary {
     &:hover {
-      .btn {
+      .button {
         &__text {
           --size: 50%;
         }
@@ -51,7 +51,7 @@ export default {
   }
 
   &--primary {
-    .btn__text {
+    .button__text {
       background: linear-gradient($clrRed 0 0) bottom / 100% var(--size, 0)
         no-repeat;
       transition: $transitionNormal;
@@ -59,7 +59,7 @@ export default {
   }
 
   &--secondary {
-    .btn__text {
+    .button__text {
       background: linear-gradient($clrBlue 0 0) bottom / 100% var(--size, 0)
         no-repeat;
       transition: $transitionNormal;
