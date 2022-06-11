@@ -66,10 +66,7 @@ export default {
 
         // Render the text for SEO reasons but hide it from the user so we only see the SVG
         span {
-          opacity: 0;
-          position: absolute;
-          right: 0;
-          transform: translateX(100%);
+          display: none;
         }
 
         &:hover {

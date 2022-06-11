@@ -1,12 +1,13 @@
 <script>
 import gql from 'graphql-tag';
 
+import { AppButton } from '@/components/button';
 import { TitleAndText } from '@/components';
 import ActivitiesList from './ActivitiesList.vue';
 
 export default {
   name: 'ActivitiesSection',
-  components: { ActivitiesList, TitleAndText },
+  components: { ActivitiesList, AppButton, TitleAndText },
   apollo: {
     content: {
       query: gql`
@@ -23,6 +24,16 @@ export default {
       },
     },
   },
+  data: {
+    // This is the number of upcoming activities to show on the activities page.
+    limit: 3,
+  },
+  methods: {
+    // Every time the 'Show more activities' button is clicked, 3 more activities will be fetched.
+    limitUp() {
+      this.limit += 3;
+    },
+  },
 };
 </script>
 
@@ -33,7 +44,11 @@ export default {
         {{ content.activitiesPageUpcomingDescription }}
       </TitleAndText>
 
-      <ActivitiesList />
+      <ActivitiesList :limit="this.limit" />
+
+      <div class="load-more">
+        <AppButton type="secondary" @click="limitUp">Show more activities</AppButton>
+      </div>
     </div>
   </section>
 </template>
@@ -62,6 +77,14 @@ export default {
 
   .title-text {
     margin-bottom: 0; // Remove the margin bottom because we're adding margin top on the cards in UpcomingListItem.vue
+  }
+
+  .load-more {
+    .button {
+      .icon {
+        display: none;
+      }
+    }
   }
 }
 </style>

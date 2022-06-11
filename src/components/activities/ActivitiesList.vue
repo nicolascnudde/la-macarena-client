@@ -8,11 +8,16 @@ export default {
   name: 'ActivitiesList',
   components: { ActivitiesListItem },
   data: { placeholderImage },
+  props: {
+    limit: {
+      type: Number,
+    },
+  },
   apollo: {
     activities: {
       query: gql`
-        query activities {
-          activities(orderBy: { date: asc }) {
+        query activities($limit: Int){
+          activities(orderBy: { date: asc }, take: $limit) {
             id
             title
             description
@@ -30,13 +35,16 @@ export default {
           }
         }
       `,
+      variables() {
+        return { limit: this.limit };
+      },
     },
   },
 };
 </script>
 
 <template>
-  <ul class="upcoming-activities__list">
+  <ul class="activities__list">
     <ActivitiesListItem
       v-for="activity in activities"
       :key="activity.id"
@@ -55,7 +63,9 @@ export default {
 </template>
 
 <style lang="scss">
-.upcoming-activities__list {
+.activities__list {
+  margin-bottom: 3rem;
+
   @include responsive(tablet) {
     display: flex;
     flex-wrap: wrap;

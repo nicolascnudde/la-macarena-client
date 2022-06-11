@@ -24,8 +24,16 @@ export default {
       routeParamId: this.$route.params.id,
     };
   },
-  setup() {
-    useMeta({ title: 'Activity' });
+  updated() {
+    useMeta({
+      title: this.activity.title,
+      meta: [
+        {
+          name: 'description',
+          content: this.activity.description,
+        },
+      ],
+    });
   },
   apollo: {
     activity: {
@@ -59,7 +67,10 @@ export default {
 </script>
 
 <template>
-  <BaseLayout v-if="!this.$apollo.queries.activity.loading" pageClass="activity-page">
+  <BaseLayout
+    v-if="!this.$apollo.queries.activity.loading"
+    pageClass="activity-page"
+  >
     <Hero
       :description="activity.description"
       :image="activity.image ? activity.image.publicUrl : placeholderImage"

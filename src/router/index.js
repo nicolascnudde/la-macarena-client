@@ -45,7 +45,13 @@ export const router = createRouter({
   history: createWebHistory(),
   routes: routes,
   linkActiveClass: 'app__header__nav__list__item__link--active',
-  scrollBehavior() {
-    return { top: 0 };
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+      };
+    } else {
+      return { top: 0 };
+    }
   },
 });
