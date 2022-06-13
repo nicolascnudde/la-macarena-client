@@ -1,5 +1,4 @@
 <script>
-import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
 import { placeholderImage } from '@/constants';
@@ -23,8 +22,26 @@ export default {
     UspsSection,
   },
   data: { placeholderImage },
-  setup() {
-    useMeta({ title: 'About' });
+  metaInfo() {
+    return {
+      // The meta information will automatically update after the data loads
+      title: this.$apollo.queries.content.loading ? 'Loading...' : this.content.aboutPageHeroTitle,
+      description: this.$apollo.queries.content.loading ? 'Loading...' : this.content.aboutPageHeroDescription,
+      meta: [
+        {
+          property: 'og:title',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.aboutPageHeroTitle,
+        },
+        {
+          property: 'og:description',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.aboutPageHeroDescription,
+        },
+        {
+          property: 'og:image',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.aboutPageHeroImage ? this.content.aboutPageHeroImage.publicUrl : placeholderImage,
+        },
+      ]
+    };
   },
   apollo: {
     content: {
@@ -49,11 +66,18 @@ export default {
 </script>
 
 <template>
-  <BaseLayout v-if="!this.$apollo.queries.content.loading" pageClass="about-page">
+  <BaseLayout
+    v-if="!this.$apollo.queries.content.loading"
+    pageClass="about-page"
+  >
     <Hero
       :title="content.aboutPageHeroTitle"
       :description="content.aboutPageHeroDescription"
-      :image="content.aboutPageHeroImage ? content.aboutPageHeroImage.publicUrl : placeholderImage"
+      :image="
+        content.aboutPageHeroImage
+          ? content.aboutPageHeroImage.publicUrl
+          : placeholderImage
+      "
       noButton
     />
 

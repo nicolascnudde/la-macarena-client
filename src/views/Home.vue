@@ -1,5 +1,4 @@
 <script>
-import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
 import { BaseLayout } from '@/layouts';
@@ -13,8 +12,27 @@ export default {
   name: 'Home',
   components: { BaseLayout, Cta, Hero, InfoBlock, TeamSection },
   data: { placeholderImage },
-  setup() {
-    useMeta({ title: '' });
+  metaInfo() {
+    return {
+      // The meta information will automatically update after the data loads
+      // The title will be set to just 'La Macarena' as defined in the App.vue file
+      title: '',
+      description: this.$apollo.queries.content.loading ? 'Loading...' : this.content.homePageHeroDescription,
+      meta: [
+        {
+          property: 'og:title',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.homePageHeroTitle,
+        },
+        {
+          property: 'og:description',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.homePageHeroDescription,
+        },
+        {
+          property: 'og:image',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.homePageHeroImage ? this.content.homePageHeroImage.publicUrl : placeholderImage,
+        },
+      ],
+    };
   },
   apollo: {
     content: {

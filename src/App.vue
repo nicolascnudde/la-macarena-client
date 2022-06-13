@@ -1,14 +1,6 @@
 <script>
-import { useMeta } from 'vue-meta';
-
 export default {
   name: 'App',
-  setup() {
-    useMeta({
-      title: '',
-      htmlAttrs: { lang: 'en', amp: true },
-    });
-  },
 };
 </script>
 

@@ -1,5 +1,4 @@
 <script>
-import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
 import { BaseLayout } from '@/layouts';
@@ -10,12 +9,22 @@ import { TitleAndText } from '@/components';
 export default {
   name: 'Goals',
   components: { BaseLayout, Cta, GoalsSection, TitleAndText },
-  setup() {
-    useMeta({
-      title: 'Goals',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    });
+  metaInfo() {
+    return {
+      // The meta information will automatically update after the data loads
+      title: this.$apollo.queries.content.loading ? 'Loading...' : this.content.goalsPageHeroTitle,
+      description: this.$apollo.queries.content.loading ? 'Loading...' : this.content.goalsPageHeroDescription,
+      meta: [
+        {
+          property: 'og:title',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.goalsPageHeroTitle,
+        },
+        {
+          property: 'og:description',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.goalsPageHeroDescription,
+        },
+      ],
+    };
   },
   apollo: {
     content: {

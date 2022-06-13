@@ -1,5 +1,4 @@
 <script>
-import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
 import { BaseLayout } from '@/layouts';
@@ -10,11 +9,22 @@ import { TitleAndText } from '@/components';
 export default {
   name: 'Contact',
   components: { BaseLayout, ContactForm, FaqSection, TitleAndText },
-  setup() {
-    useMeta({
-      title: 'Contact',
-      description: `Don't be a stranger and say hello to us! We are always happy to hear from you.`,
-    });
+  metaInfo() {
+    return {
+      // The meta information will automatically update after the data loads
+      title: this.$apollo.queries.content.loading ? 'Loading...' : this.content.contactPageHeroTitle,
+      description: this.$apollo.queries.content.loading ? 'Loading...' : this.content.contactPageHeroDescription,
+      meta: [
+        {
+          property: 'og:title',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.contactPageHeroTitle,
+        },
+        {
+          property: 'og:description',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.contactPageHeroDescription,
+        },
+      ],
+    };
   },
   apollo: {
     content: {

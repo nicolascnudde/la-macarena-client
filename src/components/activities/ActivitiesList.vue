@@ -16,7 +16,7 @@ export default {
   apollo: {
     activities: {
       query: gql`
-        query activities($limit: Int){
+        query activities($limit: Int) {
           activities(orderBy: { date: asc }, take: $limit) {
             id
             title
@@ -46,26 +46,30 @@ export default {
 </script>
 
 <template>
-  <ul v-if="activities && activities.length > 0" class="activities__list">
-    <ActivitiesListItem
-      v-for="activity in activities"
-      :key="activity.id"
-      :categoryTitle="activity.category ? activity.category.title : null"
-      :date="activity.date"
-      :description="activity.description"
-      :duration="activity.duration"
-      :fromDate="activity.fromDate"
-      :id="activity.id"
-      :image="activity.image ? activity.image.publicUrl : placeholderImage"
-      :location="activity.location"
-      :price="activity.price"
-      :slots="activity.slots"
-      :title="activity.title"
-      :toDate="activity.toDate"
-    />
-  </ul>
+  <div v-if="!this.$apollo.queries.activities.loading">
+    <ul v-if="activities && activities.length > 0" class="activities__list">
+      <ActivitiesListItem
+        v-for="activity in activities"
+        :key="activity.id"
+        :categoryTitle="activity.category ? activity.category.title : null"
+        :date="activity.date"
+        :description="activity.description"
+        :duration="activity.duration"
+        :fromDate="activity.fromDate"
+        :id="activity.id"
+        :image="activity.image ? activity.image.publicUrl : placeholderImage"
+        :location="activity.location"
+        :price="activity.price"
+        :slots="activity.slots"
+        :title="activity.title"
+        :toDate="activity.toDate"
+      />
+    </ul>
 
-  <p v-else class="no-activities">Sorry... there are no activities to show right now!</p>
+    <p v-else class="no-activities">
+      Sorry... there are no activities to show right now!
+    </p>
+  </div>
 </template>
 
 <style lang="scss">

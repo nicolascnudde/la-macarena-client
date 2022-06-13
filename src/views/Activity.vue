@@ -1,5 +1,4 @@
 <script>
-import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
@@ -24,18 +23,29 @@ export default {
     return {
       placeholderImage,
       routeParamId: this.$route.params.id,
+      activity: null,
     };
   },
-  updated() {
-    useMeta({
-      title: this.activity.title,
+  metaInfo() {
+    return {
+      // The meta information will automatically update after the data loads
+      title: this.$apollo.queries.activity.loading ? 'Loading...' : this.activity.title,
+      description: this.$apollo.queries.activity.loading ? 'Loading...' : this.activity.description,
       meta: [
         {
-          name: 'description',
-          content: this.activity.description,
+          property: 'og:title',
+          content: this.$apollo.queries.activity.loading ? 'Loading...' : this.activity.title,
         },
-      ],
-    });
+        {
+          property: 'og:description',
+          content: this.$apollo.queries.activity.loading ? 'Loading...' : this.activity.description,
+        },
+        {
+          property: 'og:image',
+          content: this.$apollo.queries.activity.loading ? 'Loading...' : this.activity.image ? this.activity.image.publicUrl : placeholderImage,
+        },
+      ]
+    };
   },
   apollo: {
     activity: {

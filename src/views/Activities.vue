@@ -1,5 +1,4 @@
 <script>
-import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
 
 import { ActivitiesSection } from '@/components/activities';
@@ -17,8 +16,22 @@ export default {
     Cta,
     TitleAndText,
   },
-  setup() {
-    useMeta({ title: 'Activities' });
+  metaInfo() {
+    return {
+      // The meta information will automatically update after the data loads
+      title: this.$apollo.queries.content.loading ? 'Loading...' : this.content.activitiesPageHeroTitle,
+      description: this.$apollo.queries.content.loading ? 'Loading...' : this.content.activitiesPageHeroDescription,
+      meta: [
+        {
+          property: 'og:title',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.activitiesPageHeroTitle,
+        },
+        {
+          property: 'og:description',
+          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.activitiesPageHeroDescription,
+        },
+      ],
+    };
   },
   apollo: {
     content: {
