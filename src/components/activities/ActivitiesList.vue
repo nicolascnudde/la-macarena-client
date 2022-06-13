@@ -46,7 +46,7 @@ export default {
 </script>
 
 <template>
-  <ul class="activities__list">
+  <ul v-if="activities && activities.length > 0" class="activities__list">
     <ActivitiesListItem
       v-for="activity in activities"
       :key="activity.id"
@@ -64,6 +64,8 @@ export default {
       :toDate="activity.toDate"
     />
   </ul>
+
+  <p v-else class="no-activities">Sorry... there are no activities to show right now!</p>
 </template>
 
 <style lang="scss">
@@ -81,5 +83,10 @@ export default {
     flex-wrap: wrap;
     gap: 2%;
   }
+}
+.no-activities {
+  padding: 5rem 0;
+  text-align: center;
+  font-size: $fontSize24;
 }
 </style>
