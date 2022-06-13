@@ -17,6 +17,7 @@ const routes = [
   {
     path: '/activities/:id-:title',
     name: 'Activity',
+    meta: { transition: 'slide' },
     component: () => import('@/views/Activity.vue'),
   },
   {

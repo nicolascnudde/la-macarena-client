@@ -9,8 +9,8 @@ export default {
     <template v-slot:title="{ content }">{{ content ? `${content} - La Macarena` : `La Macarena` }}</template>
   </metainfo>
 
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
+  <router-view v-slot="{ Component, route }">
+    <transition :name="route.meta.transition || 'fade'" mode='out-in'>
       <component :is="Component" :key="$route.path"></component>
     </transition>
   </router-view>
@@ -25,6 +25,21 @@ export default {
 
 html {
   scroll-behavior: smooth;
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: transform $transitionNormal, opacity $transitionNormal;
+}
+
+.slide-enter {
+  transform: translate(100%, 0);
+  opacity: 1;
+}
+
+.slide-leave-to {
+  transform: translate(-100%, 0);
+  opacity: 0;
 }
 
 .fade {
