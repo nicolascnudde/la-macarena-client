@@ -155,15 +155,16 @@ export default {
     background: #fff;
 
     &__image {
-      margin: 0 auto 2rem;
-
-      @include responsive(tablet) {
-        width: 50%;
-      }
+      position: relative;
+      height: 0;
+      padding-top: 56.25%;
+      margin-bottom: 2rem;
 
       img {
-        width: 100%;
-        height: 10rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
         object-fit: cover;
       }
     }
