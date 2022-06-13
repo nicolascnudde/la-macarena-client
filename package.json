@@ -19,6 +19,7 @@
     "vue": "^3.2.33",
     "vue-meta": "^3.0.0-alpha.10",
     "vue-router": "4",
+    "vue-spinner": "^1.0.4",
     "yup": "^0.32.11"
   },
   "devDependencies": {

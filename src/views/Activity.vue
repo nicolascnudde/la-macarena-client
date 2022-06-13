@@ -1,6 +1,7 @@
 <script>
 import { useMeta } from 'vue-meta';
 import gql from 'graphql-tag';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
 import { ActivityForm } from '@/components/forms';
 import { ActivitySection } from '@/components/activity';
@@ -17,6 +18,7 @@ export default {
     BaseLayout,
     Cta,
     Hero,
+    PulseLoader,
   },
   data() {
     return {
@@ -69,39 +71,49 @@ export default {
 </script>
 
 <template>
-  <BaseLayout
-    v-if="!this.$apollo.queries.activity.loading"
-    pageClass="activity-page"
-  >
-    <Hero
-      :description="activity.description"
-      :image="activity.image ? activity.image.publicUrl : placeholderImage"
-      :title="activity.title"
-      buttonLink="/activities"
-      buttonText="Back to activities"
-    />
+  <BaseLayout pageClass="activity-page">
+    <div v-if="this.$apollo.queries.activity.loading" class="loading">
+      <pulse-loader color="#99c3ec" size="32px" />
+    </div>
 
-    <ActivitySection
-      :date="activity.date"
-      :duration="activity.duration"
-      :location="activity.location"
-      :price="activity.price"
-      :slots="activity.slots"
-      :toDate="activity.toDate"
-    />
+    <div v-else>
+      <Hero
+        :description="activity.description"
+        :image="activity.image ? activity.image.publicUrl : placeholderImage"
+        :title="activity.title"
+        buttonLink="/activities"
+        buttonText="Back to activities"
+      />
 
-    <ActivityForm
-      :activityTitle="activity.title"
-      :activityPrice="activity.price"
-      :activityDate="activity.date"
-      :activityToDate="activity.toDate"
-      :activitySlots="activity.slots"
-    />
+      <ActivitySection
+        :date="activity.date"
+        :duration="activity.duration"
+        :location="activity.location"
+        :price="activity.price"
+        :slots="activity.slots"
+        :toDate="activity.toDate"
+      />
+
+      <ActivityForm
+        :activityTitle="activity.title"
+        :activityPrice="activity.price"
+        :activityDate="activity.date"
+        :activityToDate="activity.toDate"
+        :activitySlots="activity.slots"
+      />
+    </div>
   </BaseLayout>
 </template>
 
 <style lang="scss">
 .activity-page {
+  .loading {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .hero {
     margin-bottom: 3rem;
 
