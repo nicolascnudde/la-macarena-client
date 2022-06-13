@@ -76,36 +76,44 @@ export default {
         <img :src="image" :alt="title" />
       </div>
 
-      <p class="activities__list__item--bottom__description">
-        {{ description }}
-      </p>
+      <div class="activities__list__item--bottom__container">
+        <div class="activities__list__item--bottom__content">
+          <p class="activities__list__item--bottom__content__description">
+            {{ description.slice(0, 256) + '...' }}
+          </p>
 
-      <p class="activities__list__item--bottom__location">
-        Location: {{ location }}
-      </p>
+          <p class="activities__list__item--bottom__content__location">
+            Location: {{ location }}
+          </p>
 
-      <p class="activities__list__item--bottom__duration">
-        Duration: {{ duration }}
-      </p>
+          <p class="activities__list__item--bottom__content__duration">
+            Duration: {{ duration }}
+          </p>
 
-      <p v-if="slots > 0" class="activities__list__item--bottom__slots">{{ slots }} slots remaining</p>
-      <p v-else class="activities__list__item--bottom__slots">Sorry... no more slots remaining!</p>
+          <p v-if="slots > 0" class="activities__list__item--bottom__content__slots">
+            {{ slots }} slots remaining
+          </p>
+          <p v-else class="activities__list__item--bottom__content__slots">
+            Sorry... no more slots remaining!
+          </p>
+        </div>
 
-      <AppButton
-        v-if="slots > 0"
-        type="secondary"
-        :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
-      >
-        Reserve / See details
-      </AppButton>
+        <AppButton
+          v-if="slots > 0"
+          type="secondary"
+          :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
+        >
+          Reserve / See details
+        </AppButton>
 
-      <AppButton
-        v-else
-        type="secondary"
-        :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
-      >
-        See details
-      </AppButton>
+        <AppButton
+          v-else
+          type="secondary"
+          :link="`/activities/${id}-${title.toLowerCase().replaceAll(' ', '-')}`"
+        >
+          See details
+        </AppButton>
+      </div>
     </div>
   </li>
 </template>
@@ -119,11 +127,13 @@ export default {
 
   @include responsive(tablet) {
     flex-basis: 48%;
+    display: flex;
+    flex-direction: column;
   }
 
   @include responsive(desktop) {
     flex-basis: 32%;
-  }  
+  }
 
   &--top {
     background: $clrBlue;
@@ -167,6 +177,12 @@ export default {
     padding: 1rem;
     background: #fff;
 
+    @include responsive(tablet) {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
     &__image {
       position: relative;
       height: 0;
@@ -182,23 +198,37 @@ export default {
       }
     }
 
-    &__description,
-    &__duration {
-      margin-bottom: 1rem;
+    &__container {
+      @include responsive(tablet) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100%;
+      }
     }
 
-    &__location {
-      margin-bottom: 0.5rem;
-    }
+    &__content {
+      width: 100%;
+      height: auto;
 
-    &__slots {
-      font-size: $fontSize16;
-      margin-bottom: 2rem;
-      font-weight: $fontWeightBold;
-    }
+      @include responsive(tablet) {
+        flex-grow: 1;
+      }
 
-    &__full {
-      font-weight: $fontWeightBold;
+      &__description,
+      &__duration {
+        margin-bottom: 1rem;
+      }
+
+      &__location {
+        margin-bottom: 0.5rem;
+      }
+
+      &__slots {
+        font-size: $fontSize16;
+        margin-bottom: 2rem;
+        font-weight: $fontWeightBold;
+      }
     }
   }
 }

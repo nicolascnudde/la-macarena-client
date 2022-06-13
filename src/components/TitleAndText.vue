@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <section :class="[`title-text ${isH1() ? 'title-text--h1' : ''}`]">
+  <section :class="[`title-text ${isH1() ? 'title-text--h1' : 'title-text--h2'}`]">
     <div :class="[`title-text__container ${isH1() ? 'container' : ''}`]">
       <div :class="[`title-text__content ${isH1() ? 'title-text__content--flex' : ''}`]">
         <h1 class="title-text__content__title" v-if="isH1()">{{ title }}</h1>
@@ -58,6 +58,16 @@ export default {
     }
   }
 
+  &--h2 {
+    .title-text {
+      &__content__description {
+        @include responsive(tablet) {
+          width: 75%;
+        }
+      }
+    }
+  }
+
   &__content {
     &__title {
       margin-bottom: 1rem;
@@ -71,9 +81,9 @@ export default {
     &__description {
       font-size: $fontSize20;
 
-      @include responsive(tablet) {
-        width: 50%;
-      }
+        @include responsive(tablet) {
+          width: 50%;
+        }
 
       @include responsive(desktop) {
         margin-top: 1rem;

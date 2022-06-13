@@ -44,9 +44,9 @@ export default {
         class="hero__content__button"
         type="secondary"
         :link="buttonLink"
-        >
-          {{ buttonText }}
-        </AppButton>
+      >
+        {{ buttonText }}
+      </AppButton>
     </div>
 
     <div class="hero__image">
@@ -70,6 +70,10 @@ export default {
   &__content {
     &__title {
       margin-bottom: 1rem;
+
+      @include responsive(desktop) {
+        width: 50%;
+      }
     }
 
     &__description {
