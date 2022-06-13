@@ -23,14 +23,20 @@ export default {
     price: {
       type: Number,
     },
+    slots: {
+      type: Number,
+    },
+    location: {
+      type: String,
+    },
+    duration: {
+      type: String,
+    },
     date: {
       type: String,
     },
     toDate: {
       type: String,
-    },
-    slots: {
-      type: Number,
     },
   },
   methods: {
@@ -74,8 +80,15 @@ export default {
         {{ description }}
       </p>
 
+      <p class="activities__list__item--bottom__location">
+        Location: {{ location }}
+      </p>
+
+      <p class="activities__list__item--bottom__duration">
+        Duration: {{ duration }}
+      </p>
+
       <p v-if="slots > 0" class="activities__list__item--bottom__slots">{{ slots }} slots remaining</p>
-      
       <p v-else class="activities__list__item--bottom__slots">Sorry... no more slots remaining!</p>
 
       <AppButton
@@ -169,8 +182,13 @@ export default {
       }
     }
 
-    &__description {
+    &__description,
+    &__duration {
       margin-bottom: 1rem;
+    }
+
+    &__location {
+      margin-bottom: 0.5rem;
     }
 
     &__slots {

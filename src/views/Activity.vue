@@ -48,6 +48,8 @@ export default {
             }
             price
             slots
+            location
+            duration
             date
             toDate
             wysiwyg {
@@ -80,9 +82,11 @@ export default {
     />
 
     <ActivitySection
-      :slots="activity.slots"
-      :price="activity.price"
       :date="activity.date"
+      :duration="activity.duration"
+      :location="activity.location"
+      :price="activity.price"
+      :slots="activity.slots"
       :toDate="activity.toDate"
     />
 

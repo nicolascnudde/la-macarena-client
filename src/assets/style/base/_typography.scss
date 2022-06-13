@@ -55,13 +55,21 @@ p {
   line-height: 1.5;
 }
 
+a {
+  text-decoration: none;
+  color: $clrPrimary;
+}
+
 label {
   font-weight: $fontWeightBold;
   font-size: $fontSize16;
   text-transform: uppercase;
 }
 
-a {
-  text-decoration: none;
-  color: $clrPrimary;
+input,
+textarea {
+  &::placeholder {
+    color: $clrPrimary;
+    opacity: 0.75;
+  }
 }

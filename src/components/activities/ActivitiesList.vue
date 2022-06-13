@@ -30,6 +30,8 @@ export default {
               id
               title
             }
+            location
+            duration
             date
             toDate
           }
@@ -51,9 +53,11 @@ export default {
       :categoryTitle="activity.category ? activity.category.title : null"
       :date="activity.date"
       :description="activity.description"
+      :duration="activity.duration"
       :fromDate="activity.fromDate"
       :id="activity.id"
       :image="activity.image ? activity.image.publicUrl : placeholderImage"
+      :location="activity.location"
       :price="activity.price"
       :slots="activity.slots"
       :title="activity.title"

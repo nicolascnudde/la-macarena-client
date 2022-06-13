@@ -8,6 +8,12 @@ export default {
     price: {
       type: Number,
     },
+    location: {
+      type: String,
+    },
+    duration: {
+      type: String,
+    },
     date: {
       type: String,
     },
@@ -45,6 +51,22 @@ export default {
 
           <p class="activity-details__list__item__value activity-details__list__item__value--price">
             {{ price }}
+          </p>
+        </li>
+
+        <li class="activity-details__list__item">
+          <p class="activity-details__list__item__label">Location</p>
+
+          <p class="activity-details__list__item__value activity-details__list__item__value--location">
+            {{ location }}
+          </p>
+        </li>
+
+        <li class="activity-details__list__item">
+          <p class="activity-details__list__item__label">Duration</p>
+
+          <p class="activity-details__list__item__value activity-details__list__item__value--duration">
+            {{ duration }}
           </p>
         </li>
 
