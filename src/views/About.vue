@@ -53,11 +53,7 @@ export default {
     <Hero
       :title="content.aboutPageHeroTitle"
       :description="content.aboutPageHeroDescription"
-      :image="
-        content.aboutPageHeroImage
-          ? content.aboutPageHeroImage.publicUrl
-          : placeholderImage
-      "
+      :image="content.aboutPageHeroImage ? content.aboutPageHeroImage.publicUrl : placeholderImage"
       noButton
     />
 
@@ -70,3 +66,14 @@ export default {
     <Cta />
   </BaseLayout>
 </template>
+
+<style lang="scss">
+.about-page {
+  .team__content {
+    .title-text__content__description {
+      // The client preferred the description to not be shown on the about page
+      display: none;
+    }
+  }
+}
+</style>
