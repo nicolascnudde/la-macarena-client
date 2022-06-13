@@ -76,11 +76,17 @@ export default {
     }
 
     &__text {
+      font-size: $fontSize20;
+
       @include responsive(tablet) {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(25%, -50%);
+        width: 90%;
+      }
+
+      @include responsive(desktop) {
         width: 100%;
       }
     }

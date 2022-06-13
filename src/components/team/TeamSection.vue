@@ -4,13 +4,18 @@ import gql from 'graphql-tag';
 import { placeholderImage } from '@/constants';
 import { TitleAndText } from '@/components';
 import TeamList from './TeamList.vue';
+import { AppButton } from '@/components/button';
 
 export default {
   name: 'Team',
-  components: { TeamList, TitleAndText },
+  components: { AppButton, TeamList, TitleAndText },
   data: { placeholderImage },
   props: {
     imageRight: {
+      type: Boolean,
+      default: false,
+    },
+    showButton: {
       type: Boolean,
       default: false,
     },
@@ -23,6 +28,7 @@ export default {
             id
             whoWeAreTitle
             whoWeAreDescription
+            whoWeAreButtonText
             whoWeAreImage {
               publicUrl
             }
@@ -49,6 +55,13 @@ export default {
           {{ content.whoWeAreDescription }}
         </TitleAndText>
 
+        <AppButton
+          v-if="showButton"
+          class=""
+          link="/about"
+        >
+          {{ content.whoWeAreButtonText }}
+        </AppButton>
         <TeamList />
       </div>
     </div>

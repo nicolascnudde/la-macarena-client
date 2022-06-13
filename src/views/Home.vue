@@ -17,19 +17,29 @@ export default {
       // The meta information will automatically update after the data loads
       // The title will be set to just 'La Macarena' as defined in the App.vue file
       title: '',
-      description: this.$apollo.queries.content.loading ? 'Loading...' : this.content.homePageHeroDescription,
+      description: this.$apollo.queries.content.loading
+        ? 'Loading...'
+        : this.content.homePageHeroDescription,
       meta: [
         {
           property: 'og:title',
-          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.homePageHeroTitle,
+          content: this.$apollo.queries.content.loading
+            ? 'Loading...'
+            : this.content.homePageHeroTitle,
         },
         {
           property: 'og:description',
-          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.homePageHeroDescription,
+          content: this.$apollo.queries.content.loading
+            ? 'Loading...'
+            : this.content.homePageHeroDescription,
         },
         {
           property: 'og:image',
-          content: this.$apollo.queries.content.loading ? 'Loading...' : this.content.homePageHeroImage ? this.content.homePageHeroImage.publicUrl : placeholderImage,
+          content: this.$apollo.queries.content.loading
+            ? 'Loading...'
+            : this.content.homePageHeroImage
+            ? this.content.homePageHeroImage.publicUrl
+            : placeholderImage,
         },
       ],
     };
@@ -60,7 +70,10 @@ export default {
 </script>
 
 <template>
-  <BaseLayout v-if="!this.$apollo.queries.content.loading" pageClass="home-page">
+  <BaseLayout
+    v-if="!this.$apollo.queries.content.loading"
+    pageClass="home-page"
+  >
     <Hero
       :title="content.homePageHeroTitle"
       :description="content.homePageHeroDescription"
@@ -82,7 +95,7 @@ export default {
       :description="content.homePageAboutDescription"
     />
 
-    <TeamSection />
+    <TeamSection showButton />
 
     <Cta />
   </BaseLayout>

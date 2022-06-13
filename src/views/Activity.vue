@@ -96,6 +96,8 @@ export default {
       />
 
       <ActivitySection
+        :title="activity.title"
+        :description="activity.description"
         :date="activity.date"
         :duration="activity.duration"
         :location="activity.location"
@@ -128,16 +130,21 @@ export default {
     margin-bottom: 3rem;
 
     &__content {
-      display: flex;
+      /* display: flex;
       flex-direction: column;
       align-items: flex-start;
 
       &__title {
         line-height: 1.2;
+      } */
+
+      &__title,
+      &__description {
+        display: none;
       }
 
       &__button {
-        order: -1;
+        /* order: -1; */
         margin-bottom: 2rem;
 
         .button__text {

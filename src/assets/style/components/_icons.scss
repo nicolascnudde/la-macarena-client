@@ -4,6 +4,16 @@ Icons
 .icon {
   fill: $clrPrimary;
 
+  &--logo {
+    &--header {
+      width: 5.5rem;
+    }
+
+    &--footer {
+      width: 5rem;
+    }
+  }
+
   &--facebook {
     width: 1.75rem;
     height: 1.75rem;

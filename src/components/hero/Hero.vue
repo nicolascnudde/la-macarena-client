@@ -71,6 +71,10 @@ export default {
     &__title {
       margin-bottom: 1rem;
 
+      @include responsive(tablet) {
+        margin-bottom: 2rem;
+      }
+
       @include responsive(desktop) {
         width: 50%;
       }
@@ -82,6 +86,7 @@ export default {
 
       @include responsive(tablet) {
         width: 50%;
+        margin-bottom: 2rem;
       }
 
       @include responsive(desktop) {

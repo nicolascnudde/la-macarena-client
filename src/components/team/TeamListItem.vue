@@ -61,7 +61,7 @@ export default {
     transform: rotate(5deg) translateY(0) translateX(5%);
 
     @include responsive(tablet) {
-      transform: rotate(-7deg) translateY(0) translateX(-110%);
+      transform: rotate(-7deg) translateY(15%) translateX(-110%);
     }
   }
 
@@ -69,7 +69,7 @@ export default {
     transform: rotate(-5deg) translateY(0) translateX(-5%);
 
     @include responsive(tablet) {
-      transform: rotate(5deg) translateY(-30%) translateX(110%);
+      transform: rotate(5deg) translateY(-15%) translateX(110%);
     }
   }
 }

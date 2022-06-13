@@ -20,6 +20,12 @@ export default {
     toDate: {
       type: String,
     },
+    title: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
   },
   methods: {
     parseDate(date) {
@@ -37,6 +43,12 @@ export default {
 <template>
   <section class="activity-details">
     <div class="activity-details__container container">
+      <div class="activity-details__content">
+        <h1 class="activity-details__content__title">{{ title }}</h1>
+
+        <p class="activity-details__content__description">{{ description }}</p>
+      </div>
+
       <ul class="activity-details__list">
         <li class="activity-details__list__item">
           <p class="activity-details__list__item__label">Slots</p>
@@ -90,24 +102,21 @@ export default {
     margin-bottom: 7rem;
   }
 
-  &__title,
-  &__description {
-    text-align: center;
-  }
+  &__content {
+    &__title {
+      margin-bottom: 2rem;
+    }
 
-  &__title {
-    margin-bottom: 2rem;
-  }
+    &__description {
+      font-size: $fontSize20;
+      margin-bottom: 3rem;
 
-  &__description {
-    font-size: $fontSize20;
-    margin-bottom: 2rem;
-
-    @include responsive(desktop) {
-      width: 50%;
-      margin: 0 auto 2rem;
+      @include responsive(desktop) {
+        width: 75%;
+      }
     }
   }
+
 
   &__list {
     @include responsive(tablet) {

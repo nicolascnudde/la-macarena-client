@@ -1,10 +1,11 @@
 <script>
 import TheNavigation from '@/components/layout/TheNavigation.vue';
 import { Socials } from '@/components/socials';
+import Logo from '@/assets/icons/logo.svg?component';
 
 export default {
   name: 'TheHeader',
-  components: { TheNavigation, Socials },
+  components: { Logo, TheNavigation, Socials },
   data() {
     return {
       isNavOpen: false,
@@ -22,9 +23,7 @@ export default {
   <header :class="['app__header', 'container', { open: isNavOpen }]">
     <div class="app__header__top">
       <router-link class="link-to-home" to="/">
-        <div class="app__header__top__logo">
-          <img src="https://i.imgur.com/oU7CVcy.png" alt="La Macarena logo" />
-        </div>
+        <Logo class="icon--logo--header"/>
       </router-link>
 
       <button class="button button--hamburger" @click="toggleNav">
@@ -61,12 +60,6 @@ export default {
 
     .link-to-home {
       background: none; // Hide the background of the active link on the site logo
-    }
-
-    &__logo {
-      img {
-        width: 5rem;
-      }
     }
   }
 

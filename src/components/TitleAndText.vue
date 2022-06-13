@@ -59,11 +59,11 @@ export default {
   }
 
   &--h2 {
-    .title-text {
-      &__content__description {
-        @include responsive(tablet) {
-          width: 75%;
-        }
+    .title-text__content__description {
+      font-size: $fontSize18;
+
+      @include responsive(desktop) {
+        width: 75%;
       }
     }
   }
@@ -85,9 +85,9 @@ export default {
           width: 50%;
         }
 
-      @include responsive(desktop) {
-        margin-top: 1rem;
-      }
+        @include responsive(desktop) {
+          margin-top: 1rem;
+        }
     }
 
     &--flex {

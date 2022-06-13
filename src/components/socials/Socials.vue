@@ -61,13 +61,17 @@ export default {
     gap: 3rem;
 
     &__item {
+      // Render the names for accessibility reasons but hide them from screen
+      span {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(-1000%);
+      }
+
       @include responsive(desktop) {
         transition: transform $transitionFast;
-
-        // Render the text for SEO reasons but hide it from the user so we only see the SVG
-        span {
-          display: none;
-        }
 
         &:hover {
           transform: scale(1.2);

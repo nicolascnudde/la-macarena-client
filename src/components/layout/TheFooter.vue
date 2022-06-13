@@ -3,10 +3,11 @@ import { Socials } from '@/components/socials';
 import Heart from '@/assets/icons/heart.svg?component';
 import SeparatorBottom from '@/assets/icons/separator-bottom.svg?component';
 import SeparatorTop from '@/assets/icons/separator-top.svg?component';
+import Logo from '@/assets/icons/logo.svg?component';
 
 export default {
   name: 'TheFooter',
-  components: { Heart, SeparatorBottom, SeparatorTop, Socials },
+  components: { Heart, Logo, SeparatorBottom, SeparatorTop, Socials },
   methods: {
     getCurrentYear() {
       return new Date().getFullYear();
@@ -22,9 +23,9 @@ export default {
         <SeparatorTop class="app__footer__top__separator" />
 
         <div class="app__footer__top__content">
-          <div class="app__footer__top__content__logo">
-            <img src="https://i.imgur.com/oU7CVcy.png" alt="La Macarena logo" />
-          </div>
+          <router-link class="link-to-home" to="/">
+            <Logo class="icon--logo--footer" />
+          </router-link>
 
           <Socials class="app__footer__socials socials" />
         </div>
@@ -66,10 +67,8 @@ export default {
       justify-content: space-between;
       align-items: center;
 
-      &__logo {
-        img {
-          width: 5rem;
-        }
+      .link-to-home {
+        background: none; // Hide the background of the active link on the site logo
       }
     }
   }
