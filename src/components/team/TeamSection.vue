@@ -78,12 +78,12 @@ export default {
 
   @include responsive(desktop) {
     position: relative;
-  }
 
-  &__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__image {
