@@ -51,7 +51,6 @@ export default {
   @include responsive(tablet) {
     grid-template-columns: repeat(2, 1fr);
     background-size: 100%;
-    margin-bottom: -12%; // Mitigate the transform translateY of the TeamListItems
   }
 }
 </style>
