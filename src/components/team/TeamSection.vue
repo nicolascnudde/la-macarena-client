@@ -57,7 +57,7 @@ export default {
 
         <AppButton
           v-if="showButton"
-          class=""
+          class="team__content__button"
           link="/about"
         >
           {{ content.whoWeAreButtonText }}
@@ -125,6 +125,14 @@ export default {
   &__content {
     @include responsive(desktop) {
       flex-basis: 48%;
+    }
+
+    &__button {
+      margin-bottom: 2rem;
+
+      @include responsive(tablet) {
+        margin-bottom: 0;
+      }
     }
   }
 }
