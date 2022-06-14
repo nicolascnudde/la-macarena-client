@@ -104,6 +104,10 @@ export default {
     left: 0;
     z-index: -1;
 
+    @include responsive(desktop) {
+      left: unset;
+    }
+
     img {
       width: 100%;
       max-width: 100%;
