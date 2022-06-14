@@ -130,7 +130,7 @@ export default {
     &__button {
       margin-bottom: 2rem;
 
-      @include responsive(desktop) {
+      @include responsive(tablet) {
         margin-bottom: 0;
       }
     }
