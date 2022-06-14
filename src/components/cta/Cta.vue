@@ -109,16 +109,11 @@ export default {
       &--desktop {
         display: none;
         margin: 2rem 0;
-        flex-basis: 50%;
+        flex-basis: 33.33%;
 
         img {
           width: 100%;
-          max-height: 25rem;
           object-fit: cover;
-
-          @include responsive(desktop) {
-            width: 48%;
-          }
         }
 
         @include responsive(tablet) {
