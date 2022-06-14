@@ -77,6 +77,10 @@ export default {
   &__content {
     padding: 2rem 0;
 
+    @include responsive(tablet) {
+      flex-basis: 48%;
+    }
+
     &__title {
       text-align: center;
       margin-bottom: 2rem;
@@ -105,9 +109,16 @@ export default {
       &--desktop {
         display: none;
         margin: 2rem 0;
+        flex-basis: 50%;
 
         img {
-          width: 25vw;
+          width: 100%;
+          max-height: 25rem;
+          object-fit: cover;
+
+          @include responsive(desktop) {
+            width: 48%;
+          }
         }
 
         @include responsive(tablet) {
@@ -119,7 +130,7 @@ export default {
     &__description {
       margin-bottom: 2rem;
 
-      @include responsive(tablet) {
+      @include responsive(desktop) {
         width: 50%;
       }
     }

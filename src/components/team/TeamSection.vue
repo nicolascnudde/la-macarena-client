@@ -101,6 +101,8 @@ export default {
         width: 45%;
         transform: translateY(-50%);
         left: 0;
+        max-height: 75%;
+        object-fit: cover;
       }
     }
 
