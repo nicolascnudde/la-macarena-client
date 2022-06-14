@@ -67,6 +67,23 @@ export default {
       validationSchema,
     };
   },
+  apollo: {
+    content: {
+      query: gql`
+        query content($id: ID!) {
+          content(where: { id: $id }) {
+            id
+            contactPageFormImage {
+              publicUrl
+            }
+          }
+        }
+      `,
+      variables: {
+        id: 1,
+      },
+    },
+  },
   methods: {
     parseDate(date) {
       const parsedDate = new Date(date);
@@ -143,11 +160,11 @@ export default {
       as="div"
       class="activity-form__container container"
     >
-      <div class="activity-form__content">
+      <div v-if="!this.$apollo.queries.content.loading" class="activity-form__content">
         <h2 class="activity-form__content__title">Ready to reserve?</h2>
 
         <div class="activity-form__content__image">
-          <img :src="placeholderImage" alt="ready to reserve" />
+          <img :src="content.contactPageFormImage ? content.contactPageFormImage.publicUrl : placeholderImage" alt="ready to reserve?"/>
         </div>
       </div>
 
@@ -263,7 +280,7 @@ export default {
             name="activityDate"
             type="text"
             readonly
-            :value="`${parseDate(activityDate)} ${activityToDate ? ' – ' + parseDate(activityToDate) : ''}`"
+            :value="`${parseDate(activityDate)} ${activityToDate ? ' - ' + parseDate(activityToDate) : ''}`"
           />
 
           <ErrorMessage
@@ -279,7 +296,7 @@ export default {
             as="textarea"
             id="message"
             name="message"
-            placeholder="What do you want to tell us?"
+            placeholder="Is there something you want to tell us?"
             rows="4"
           />
 
