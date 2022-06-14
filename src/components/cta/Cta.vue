@@ -113,7 +113,6 @@ export default {
 
         img {
           width: 100%;
-          max-height: 25rem;
           object-fit: cover;
         }
 
